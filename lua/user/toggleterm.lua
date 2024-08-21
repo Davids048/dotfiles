@@ -13,6 +13,7 @@ toggleterm.setup({
 	start_in_insert = true,
 	insert_mappings = true,
 	persist_size = true,
+	auto_scroll = true,
 	direction = "float",
 	close_on_exit = true,
 	shell = vim.o.shell,
@@ -61,6 +62,12 @@ local htop = Terminal:new({ cmd = "htop", hidden = true })
 
 function _HTOP_TOGGLE()
 	htop:toggle()
+end
+
+local nvidia_smi = Terminal:new({ cmd = "nvidia-smi ", hidden = true, close_on_exit = false })
+
+function _NVIDIA_SMI()
+  nvidia_smi:toggle()
 end
 
 local python = Terminal:new({ cmd = "python", hidden = true })

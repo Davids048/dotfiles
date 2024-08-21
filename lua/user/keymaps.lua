@@ -19,10 +19,10 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-M-h>", "<C-w>h", opts)
-keymap("n", "<C-M-j>", "<C-w>j", opts)
-keymap("n", "<C-M-k>", "<C-w>k", opts)
-keymap("n", "<C-M-l>", "<C-w>l", opts)
+keymap("n", "<C-H>", "<C-w>h", opts)
+keymap("n", "<C-J>", "<C-w>j", opts)
+keymap("n", "<C-K>", "<C-w>k", opts)
+keymap("n", "<C-L>", "<C-w>l", opts)
 
 -- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
