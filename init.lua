@@ -31,4 +31,5 @@ require("user.bufferline")
 require("user.toggleterm")
 require("user.lualine")
 require("Comment").setup()
+require("user.context")
 
