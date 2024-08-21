@@ -111,15 +111,6 @@ return packer.startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
-  -- ssh server (deprecated: since I can install neovim on server, I no longer need this plugin
-  -- use {
-  --   'chipsenkbeil/distant.nvim',
-  --   branch = 'v0.3',
-  --   config = function()
-  --       require('distant'):setup()
-  --   end
-  -- }
-
   -- commenting
   use {
     'numToStr/Comment.nvim',
@@ -127,6 +118,9 @@ return packer.startup(function(use)
         require('Comment').setup()
     end
   }
+
+  -- context
+  use "nvim-treesitter/nvim-treesitter-context"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
