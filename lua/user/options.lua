@@ -22,7 +22,7 @@ vim.opt.undofile = true                         -- enable persistent undo
 vim.opt.updatetime = 300                        -- faster completion (4000ms default)
 vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.expandtab = false                        -- convert tabs to spaces
-vim.opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
+vim.opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
 
 vim.opt.cursorline = true                       -- highlight the current line
@@ -46,3 +46,6 @@ vim.cmd[[highlight LineNr ctermfg=white guifg=white]]
 vim.cmd[[highlight CursorLineNr ctermfg=cyan guifg=cyan]]
 vim.cmd[[highlight Comment ctermfg=lightblue guifg=lightblue gui=italic cterm=italic]]
 -- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+-- Remove 'c' and 'r' from formatoptions
+vim.api.nvim_command("autocmd FileType * setlocal formatoptions-=cro")
+
