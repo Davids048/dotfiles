@@ -92,7 +92,13 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- auto close brackets
-  use "windwp/nvim-autopairs"
+  use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+  }
 
   -- file explorer
   use "kyazdani42/nvim-web-devicons"
