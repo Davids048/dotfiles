@@ -105,11 +105,11 @@ return packer.startup(function(use)
   use "nvim-tree/nvim-tree.lua"
 
   -- buffer line
-  use "akinsho/bufferline.nvim"
+  -- use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
 
   -- toggle term
-  use "akinsho/toggleterm.nvim"
+  -- use "akinsho/toggleterm.nvim"
 
   -- status line
   use {

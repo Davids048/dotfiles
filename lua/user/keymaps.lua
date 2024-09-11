@@ -25,7 +25,8 @@ keymap("n", "<C-K>", "<C-w>k", opts)
 keymap("n", "<C-L>", "<C-w>l", opts)
 
 -- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeFocus<cr>", opts)
+keymap("n", "<leader>E", ":NvimTreeClose<cr>", opts)
 
 
 -- Resize with arrows
@@ -69,6 +70,8 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Telescope
 keymap("n", "<leader>tf", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
 keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
+
 
 -- ConTeXt
 vim.keymap.set("n", "[c", function()
