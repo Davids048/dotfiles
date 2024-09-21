@@ -45,9 +45,14 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   -- use 'rstacruz/vim-closer' -- IDK what this does
 
-  use "lunarvim/darkplus.nvim"
+  -- color
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Load on a combination of conditions: specific filetypes or commands
+  use {
+	'nvim-treesitter/nvim-treesitter',
+	run = ':TSUpdate'
+  }
   -- Also run code after load (see the "config" key)
   use {
     'w0rp/ale',
@@ -135,6 +140,9 @@ return packer.startup(function(use)
 	  run = function() vim.fn["mkdp#util#install"]() end,
   })
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+  -- clipboard 
+  use {'ojroques/nvim-osc52'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
