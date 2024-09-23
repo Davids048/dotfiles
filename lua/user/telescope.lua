@@ -12,7 +12,8 @@ telescope.setup {
 	initial_mode = "normal",
     prompt_prefix = "",
     selection_caret = "➡️ ",
-    path_display = { "smart" },
+    path_display = { "filename_first" },
+	sorting_strategy = "ascending",
 
     mappings = {
       i = {
