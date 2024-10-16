@@ -73,6 +73,7 @@ keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers({sort_mru = true, select_current = true})<cr>", opts)
 keymap("n", "<leader>s", ":lua require('telescope.builtin').lsp_document_symbols({sorting_strategy='ascending', show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct'}})<cr>", opts)
 keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
+keymap("n", "<leader>d", "<cmd>Telescope diagnostics<cr>", opts)
 
 -- ConTeXt
 vim.keymap.set("n", "[c", function()
