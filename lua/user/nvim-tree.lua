@@ -32,10 +32,10 @@ nvim_tree.setup({
     diagnostics = {
         enable = true,
         icons = {
-            hint = ">",
+            hint = "H",
             info = "I",
-            warning = "!!",
-            error = "x",
+            warning = "W",
+            error = "E",
         },
     },
     -- update_focused_file = {
@@ -45,13 +45,13 @@ nvim_tree.setup({
     -- },
     git = {
         enable = true,
-        ignore = true,
+        ignore = false,
         timeout = 500,
     },
     view = {
         width = {
 			min = 40,
-			max = -1,
+			max = 100,
 		},
         side = "left",
 		centralize_selection = false,
