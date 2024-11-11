@@ -4,6 +4,7 @@ local servers = {
 	"pyright",
 	"jsonls",
 	"clangd",
+	"gopls",
 }
 
 local settings = {
