@@ -16,4 +16,4 @@ require("Comment").setup()
 require("user.context")
 require("user.treesitter")
 require("user.clipboard")
-
+require("user.folding")
