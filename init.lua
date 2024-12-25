@@ -1,7 +1,6 @@
 require("user.user-commands")
 
 require("user.plugins")
-require("user.colorscheme")
 require("user.options")
 require("user.keymaps")
 require("user.cmp")
@@ -17,3 +16,4 @@ require("user.context")
 require("user.treesitter")
 require("user.clipboard")
 require("user.folding")
+require("user.colorscheme")

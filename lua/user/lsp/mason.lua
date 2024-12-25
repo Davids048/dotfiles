@@ -2,9 +2,9 @@
 local servers = {
   	"lua_ls",
 	"pyright",
+	"pylsp",
 	"jsonls",
 	"clangd",
-	"gopls",
 }
 
 local settings = {
