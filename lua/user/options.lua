@@ -34,6 +34,9 @@ vim.opt.relativenumber = false                  -- set relative numbered lines
 vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = true								-- display lines as one long line
+vim.opt.colorcolumn = "80"						-- add a mark at col 80
+vim.opt.linebreak = true
+vim.opt.showbreak = ">> "
 vim.opt.scrolloff = 8                           -- is one of my fav
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
@@ -42,10 +45,21 @@ vim.opt.shortmess:append "c"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
-vim.cmd[[highlight LineNr ctermfg=white guifg=white]]
+vim.cmd[[highlight LineNr ctermfg=grey guifg=grey]]
 vim.cmd[[highlight CursorLineNr ctermfg=cyan guifg=cyan]]
 vim.cmd[[highlight Comment ctermfg=lightblue guifg=lightblue gui=italic cterm=italic]]
 -- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 -- Remove 'c' and 'r' from formatoptions
 vim.api.nvim_command("autocmd FileType * setlocal formatoptions-=cro")
+
+-- Configure Message when saving a file
+vim.api.nvim_create_autocmd("BufWritePost", {
+    callback = function()
+        local filename = vim.fn.expand("%:p")
+        local time = os.date("%Y-%m-%d %H:%M:%S")
+        local message = string.format("File '%s' written at %s", filename, time)
+        vim.notify(message, vim.log.levels.INFO)  -- Displays a notification
+    end,
+})
+
 
