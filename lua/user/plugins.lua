@@ -152,6 +152,18 @@ return packer.startup(function(use)
   --folding
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
+  --Obsidian
+  use({
+    "epwalsh/obsidian.nvim",
+    tag = "*",  -- recommended, use latest release instead of latest commit
+    requires = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+
+      -- see below for full list of optional dependencies 👇
+    },
+  })
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

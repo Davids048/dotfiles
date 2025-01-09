@@ -20,4 +20,5 @@ require("user.colorscheme")
 require("user.templates")
 -- require("luasnip.loaders.from_snipmate").lazy_load({paths = "./snippets"})
 require("user.conda-envs")
-
+require("user.obsidian")
+require("user.recent-dir")
