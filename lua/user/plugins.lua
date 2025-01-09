@@ -92,6 +92,8 @@ return packer.startup(function(use)
   -- telescope
   use "nvim-telescope/telescope.nvim" 
   use 'nvim-telescope/telescope-media-files.nvim'
+  use { "nvim-telescope/telescope-file-browser.nvim" }
+
 
   -- git plugins
   use "lewis6991/gitsigns.nvim"

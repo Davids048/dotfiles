@@ -89,6 +89,9 @@ keymap("i", "<F10>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra 
 keymap("n", "<F9>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -O2 -o %< % && ./%< < _tc_ <CR>", opts)
 keymap("i", "<F9>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -O2 -o %< % && ./%< _tc_ <CR>", opts)
 
+-- RecentDir related keymap
+keymap("n", "<leader>red", "<cmd>RecentDir<cr>", opts)
+
 -- ConTeXt
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
