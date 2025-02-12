@@ -77,18 +77,6 @@ keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 keymap("n", "<leader>d", "<cmd>Telescope diagnostics<cr>", opts)
 
 
--- CodeForces (CPP COMPILE)
--- Compile and run program automatically (no input).
--- keymap("n", "<F9>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -O2 -o %< % && ./%< <CR>", opts)
--- keymap("i", "<F9>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -O2 -o %< % && ./%< <CR>", opts)
-
--- Compile and run program automatically (w/ input, debug).
-keymap("n", "<F10>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -DDEBUG -O2 -o %< % && ./%< < _tc_ <CR>", opts)
-keymap("i", "<F10>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -DDEBUG -O2 -o %< % && ./%< _tc_ <CR>", opts)
--- Compile and run program automatically (w/ input, w/o debug).
-keymap("n", "<F9>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -O2 -o %< % && ./%< < _tc_ <CR>", opts)
-keymap("i", "<F9>", ":w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -DLOCAL -O2 -o %< % && ./%< _tc_ <CR>", opts)
-
 -- RecentDir related keymap
 keymap("n", "<leader>red", "<cmd>RecentDir<cr>", opts)
 
