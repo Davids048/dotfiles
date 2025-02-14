@@ -5,7 +5,7 @@ return {
 	settings = {
         pylsp = {
             plugins = {
-                pyflakes = { enabled = true },
+                pyflakes = { enabled = false },
                 pycodestyle = { enabled = false },
                 pylint = { enabled = false },
 				jedi_environment = vim.g.python3_host_prog,
