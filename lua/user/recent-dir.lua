@@ -3,7 +3,6 @@ local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 
 local M = {}
-
 function M.recent_dirs()
   local dirs = {}
   for _, file in ipairs(vim.v.oldfiles) do

@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     callback = function()
         local filename = vim.fn.expand("%:p")
         local time = os.date("%Y-%m-%d %H:%M:%S")
-        local message = string.format("File written at %s", time)
+        local message = string.format("Written at %s", time)
         vim.notify(message, vim.log.levels.INFO)  -- Displays a notification
     end,
 })
