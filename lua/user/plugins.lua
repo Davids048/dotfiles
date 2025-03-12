@@ -154,7 +154,7 @@ return packer.startup(function(use)
   --folding
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
-
+  --Symbols
   use({"stevearc/aerial.nvim"})
 
 
