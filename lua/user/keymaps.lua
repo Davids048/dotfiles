@@ -86,3 +86,8 @@ keymap("n", "<leader>red", "<cmd>RecentDir<cr>", opts)
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
+
+
+-- Gitsigns
+keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", opts)
+keymap("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", opts)
