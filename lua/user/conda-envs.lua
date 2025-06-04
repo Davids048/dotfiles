@@ -60,12 +60,23 @@ local function activate_conda_env(env)
         print("Activated Python interpreter: " .. python_path)
 
         -- Update Pyright after selecting Conda env
-        require('lspconfig').pyright.setup({
+        -- Setup all hooks (refer to mason setup)
+        local opts = {
+            on_attach = require("user.lsp.handlers").on_attach,
+            capabilities = require("user.lsp.handlers").capabilities,
+	    }
+        local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. "pyright")
+        if require_ok then 
+            opts = vim.tbl_deep_extend('force', conf_opts, opts)
+        end
+        opts = vim.tbl_deep_extend('force', opts, {
             on_init = function(client)
                 client.config.settings.python.pythonPath = python_path
                 print("Pyright now using Python: " .. python_path)
             end,
         })
+        -- Load in all options.
+        require('lspconfig').pyright.setup(opts)
         vim.cmd("LspRestart") -- Restart the language server to apply changes
     end
 end

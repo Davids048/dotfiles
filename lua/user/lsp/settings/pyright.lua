@@ -3,7 +3,7 @@ return {
 
     python = {
       analysis = {
-        typeCheckingMode = "off"
+        typeCheckingMode = "on"
       },
 	  pythonPath = vim.g.python3_host_prog,
     },
