@@ -29,6 +29,9 @@ vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = false                  -- set relative numbered lines
 
+-- Set trailing space as center dot.
+vim.opt.list = true
+vim.opt.listchars:append("trail:·")   -- or: vim.opt.listchars:append{ trail = "·" }
 
 
 vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
