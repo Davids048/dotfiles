@@ -2,7 +2,7 @@ require("user.options")
 require("user.keymaps")
 require("user.lazy")
 require("user.clipboard")
-vim.cmd.colorscheme "catppuccin"
+require("user.colorscheme")
 
 
 -- require("user.lsp")
