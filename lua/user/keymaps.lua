@@ -30,11 +30,14 @@ keymap("n", "<leader>E", ":NvimTreeClose<cr>", opts)
 
 
 -- Resize with arrows
-keymap("n", "<S-Up>", ":resize +2<CR>", opts)
-keymap("n", "<S-Down>", ":resize -2<CR>", opts)
-keymap("n", "<S-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<S-Right>", ":vertical resize +2<CR>", opts)
-
+-- keymap("n", "<S-Up>", ":resize +2<CR>", opts)
+-- keymap("n", "<S-Down>", ":resize -2<CR>", opts)
+-- keymap("n", "<S-Left>", ":vertical resize -2<CR>", opts)
+-- keymap("n", "<S-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<S-Up>", "<cmd>lua vim.cmd(vim.fn.winnr() == vim.fn.winnr('j') and 'resize +2' or 'resize -2')<CR>", opts)
+keymap("n", "<S-Down>", "<cmd>lua vim.cmd(vim.fn.winnr() == vim.fn.winnr('k') and 'resize +2' or 'resize -2')<CR>", opts)
+keymap("n", "<S-Left>", "<cmd>lua vim.cmd(vim.fn.winnr() == vim.fn.winnr('l') and 'vertical resize +2' or 'vertical resize -2')<CR>", opts)
+keymap("n", "<S-Right>", "<cmd>lua vim.cmd(vim.fn.winnr() == vim.fn.winnr('h') and 'vertical resize +2' or 'vertical resize -2')<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -68,7 +71,8 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope --
-keymap("n", "<leader>tf", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
+keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
+keymap("n", "<leader>tf", "<cmd>Telescope file_browser<cr>", opts)
 keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers({sort_mru = true, select_current = true})<cr>", opts)
 -- Symbols
