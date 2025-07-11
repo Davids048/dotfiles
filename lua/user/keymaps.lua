@@ -99,3 +99,7 @@ keymap("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", opts)
 
 -- aerial
 keymap("n", "<leader>a", "<cmd>AerialToggle!<CR>", opts)
+
+-- Markdown preview
+keymap("n", "<leader>p", "<cmd>MarkdownPreview<cr>", opts)
+keymap("n", "<leader>P", "<cmd>MarkdownPreview<cr>", opts)
