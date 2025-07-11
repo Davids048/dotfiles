@@ -5,7 +5,7 @@ require("user.clipboard")
 require("user.colorscheme")
 
 
--- require("user.lsp")
+require("user.lsp")
 -- require("Comment").setup()
 -- require("user.context")
 -- require("user.folding")

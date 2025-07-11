@@ -78,100 +78,100 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- use "L3MON4D3/LuaSnip" --snippet engine
+  -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
 
   -- lsp 
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/mason.nvim" -- simple to use language server installer
-  use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
+  -- use "neovim/nvim-lspconfig" -- enable LSP
+  -- use "williamboman/mason.nvim" -- simple to use language server installer
+  -- use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
   -- use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
-  use {"ray-x/lsp_signature.nvim",}
+  -- use {"ray-x/lsp_signature.nvim",}
 
 
   -- telescope
-  use "nvim-telescope/telescope.nvim" 
-  use 'nvim-telescope/telescope-media-files.nvim'
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  -- use "nvim-telescope/telescope.nvim" 
+  -- use 'nvim-telescope/telescope-media-files.nvim'
+  -- use { "nvim-telescope/telescope-file-browser.nvim" }
 
 
   -- git plugins
-  use "lewis6991/gitsigns.nvim"
+  -- use "lewis6991/gitsigns.nvim"
 
   -- auto close brackets
-  use {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = function()
-        require("nvim-autopairs").setup {}
-    end
-  }
+  -- use {
+  --   "windwp/nvim-autopairs",
+  --   event = "InsertEnter",
+  --   config = function()
+  --       require("nvim-autopairs").setup {}
+  --   end
+  -- }
 
   -- file explorer
-  use "kyazdani42/nvim-web-devicons"
-  use "nvim-tree/nvim-tree.lua"
+  -- use "kyazdani42/nvim-web-devicons"
+  -- use "nvim-tree/nvim-tree.lua"
 
   -- buffer line
   -- use "akinsho/bufferline.nvim"
-  use "moll/vim-bbye"
+  -- use "moll/vim-bbye"
 
   -- toggle term
   -- use "akinsho/toggleterm.nvim"
 
   -- status line
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+  -- use {
+  --   'nvim-lualine/lualine.nvim',
+  --   requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  -- }
 
-  -- commenting
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
-  }
+  -- -- commenting
+  -- use {
+  --   'numToStr/Comment.nvim',
+  --   config = function()
+  --       require('Comment').setup()
+  --   end
+  -- }
 
   -- context
-  use "nvim-treesitter/nvim-treesitter-context"
+  -- use "nvim-treesitter/nvim-treesitter-context"
 
   -- markdown
   -- install without yarn or npm
-  use({
-	  "iamcco/markdown-preview.nvim",
-	  run = function() vim.fn["mkdp#util#install"]() end,
-  })
+  -- use({
+  --  "iamcco/markdown-preview.nvim",
+  --  run = function() vim.fn["mkdp#util#install"]() end,
+  -- })
   -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -- clipboard 
-  use {'ojroques/nvim-osc52'}
+  -- use {'ojroques/nvim-osc52'}
 
   -- latex
-  use({
-		"lervag/vimtex"
-  })
+  -- use({
+  -- "lervag/vimtex"
+  -- })
 
   --folding
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  -- use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
   --Symbols
-  use({"stevearc/aerial.nvim"})
+  -- use({"stevearc/aerial.nvim"})
 
 
-  use {"folke/todo-comments.nvim"}
+  -- use {"folke/todo-comments.nvim"}
 
-  use({
-    'MeanderingProgrammer/render-markdown.nvim',
-    after = { 'nvim-treesitter' },
-    requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
-    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
-    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-    config = function()
-        require('render-markdown').setup({})
-    end,
-  })
-
+  -- use({
+  --   'MeanderingProgrammer/render-markdown.nvim',
+  --   after = { 'nvim-treesitter' },
+  --   requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+  --   -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+  --   -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+  --   config = function()
+  --       require('render-markdown').setup({})
+  --   end,
+  -- })
+  --
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
