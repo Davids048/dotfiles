@@ -79,7 +79,7 @@ local config_func = function()
             lualine_c = {
                 {
                     "filename",
-                    file_statue = true,
+                    file_status = true,
                     path = 2,
                 }
             },
