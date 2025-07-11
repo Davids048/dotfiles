@@ -39,6 +39,7 @@ require("catppuccin").setup({
 	},
     custom_highlights = function(colors)
         return {
+            WinSeparator = { fg = colors.pink },
         }
     end,
     default_integrations = true,
