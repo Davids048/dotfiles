@@ -2,3 +2,4 @@ plugin/*
 plugin/
 config/
 config/*
+lazy-lock.json
