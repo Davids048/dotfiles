@@ -54,7 +54,6 @@ alias ll='gls -alF --color=auto -h --group-directories-first'
 alias ls='gls --color=auto -h --group-directories-first'
 alias obsidian='cd ~/Documents/Obsidian\ Vault/'
 alias cf="cd ~/repos/codeforces"
-alias server="ssh -p 3003 david-docker@davids048-intel.duckdns.org"
 # <<< Useful Commands <<<
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
