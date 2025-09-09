@@ -1,6 +1,4 @@
-local config = {
-    
-}
+local config = {}
 
 return {
     "lewis6991/gitsigns.nvim",
