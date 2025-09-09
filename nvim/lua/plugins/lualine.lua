@@ -10,7 +10,7 @@ local config_func = function()
 
     local diagnostics = {
         "diagnostics",
-        sources = { "nvim_diagnostic" },
+        sources = { "nvim_lsp" },
         sections = { "error", "warn" },
         symbols = { error = " ", warn = " " },
         colored = false,
@@ -70,7 +70,7 @@ local config_func = function()
             theme = "dracula",
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
-            disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
+            disabled_filetypes = { "dashboard", "NvimTree", "Outline", "netrw"},
             always_divide_middle = true,
         },
         sections = {
@@ -103,8 +103,6 @@ local config_func = function()
     end
 
 
-config_func = function ()
-end
 
 return {
     'nvim-lualine/lualine.nvim',
