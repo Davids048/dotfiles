@@ -1,0 +1,10 @@
+[user]
+    name = "Davids048"
+
+[init]
+    defaultBranch = main
+
+[alias]
+    stat = status
+    st = status
+    lg = log --oneline --graph --decorate --all

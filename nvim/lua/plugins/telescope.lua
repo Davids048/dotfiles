@@ -1,15 +1,15 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  return
-end
+local config_func = function()
+    local status_ok, telescope = pcall(require, "telescope")
+    if not status_ok then
+      return
+    end
 
-telescope.load_extension('media_files')
-telescope.load_extension('file_browser')
+    telescope.load_extension('media_files')
+    telescope.load_extension('file_browser')
 
-local actions = require "telescope.actions"
+    local actions = require "telescope.actions"
 
 
-local config_func = function() 
     telescope.setup {
         defaults = {
         initial_mode = "normal",
@@ -110,5 +110,9 @@ end
 
 return {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    dependencies = {
+        'nvim-lua/plenary.nvim' ,
+        'nvim-telescope/telescope-media-files.nvim',
+    },
     config = config_func
 }
