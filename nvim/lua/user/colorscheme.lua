@@ -74,3 +74,21 @@ vim.api.nvim_set_hl(0, 'LineNr', {
   fg = '#555555',
   bg = '#222222'
 })
+
+
+vim.api.nvim_set_hl(0, 'TabLineSel', {
+  fg = '#cccccc',
+  bg = '#444444'
+})
+
+vim.api.nvim_set_hl(0, 'TabLineFill', {
+  bg = '#666666'
+})
+
+vim.api.nvim_set_hl(0, 'MsgArea', {
+  bg = '#222222'
+})
+
+vim.api.nvim_set_hl(0, 'TelescopeSelection', {
+  bg = '#333333'
+})

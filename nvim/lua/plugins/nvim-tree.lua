@@ -24,11 +24,13 @@ local config_func = function()
             error = "E",
         },
     },
-    -- update_focused_file = {
-    --     enable = true,
-    --     update_cwd = true,
-    --     ignore_list = {},
-    -- },
+    update_focused_file = {
+        enable = true,
+        update_cwd = true,
+        ignore_list = {},
+    },
+    sync_root_with_cwd = true,
+
     git = {
         enable = true,
         ignore = false,
