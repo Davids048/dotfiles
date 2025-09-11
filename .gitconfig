@@ -1,5 +1,6 @@
 [user]
     name = "Davids048"
+    email = "jundasu@ucsd.edu"
 
 [init]
     defaultBranch = main
@@ -8,3 +9,15 @@
     stat = status
     st = status
     lg = log --oneline --graph --decorate --all
+
+
+[diff]
+    algorithm = histogram
+    compactionHeuristic = true
+    # showfunc-line = "^[[:alpha:]$_].*[^:]\s*$"
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red
+    new = green
