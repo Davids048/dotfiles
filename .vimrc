@@ -12,6 +12,7 @@ set colorcolumn=80
 set wrap 
 set scrolloff=8
 set mouse=a
+set noswapfile
 
 let mapleader=" "
 
