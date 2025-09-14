@@ -19,5 +19,31 @@ fi
 alias ll='ls -alF -h --color --group-directories-first'
 alias la='ls -A'
 alias l='ls -CF'
+alias nvidia-w="watch -n 0.5 nvidia-smi"
+
+if [[ -f "/workspace/.env" ]]; then
+    source /workspace/.env
+    alias nvim="$NVIM_PATH/nvim-linux-x86_64/bin/nvim"
+else 
+    echo "No env file for $NVIM_PATH."
+fi
 
 
+# uv related setup >>>>>
+. "$HOME/.local/bin/env"
+if [ -d .venv ]; then 
+    source .venv/bin/activate 
+fi
+
+cd() {
+    builtin cd "$@" && {
+        if [ -f .venv/bin/activate ]; then
+            source .venv/bin/activate
+        fi
+    }
+}
+# uv related setup <<<<<
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
