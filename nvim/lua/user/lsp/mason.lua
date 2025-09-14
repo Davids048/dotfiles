@@ -1,10 +1,11 @@
 
 local servers = {
   	"lua_ls",
-	"pyright",
+	-- "pyright",
 	-- "pylsp",
 	"jsonls",
 	"clangd",
+    "basedpyright",
 }
 
 local settings = {
