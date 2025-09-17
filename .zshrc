@@ -57,3 +57,5 @@ alias cf="cd ~/repos/codeforces"
 # <<< Useful Commands <<<
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+
+. "$HOME/.local/bin/env"

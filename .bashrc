@@ -28,11 +28,17 @@ else
     echo "No env file for $NVIM_PATH."
 fi
 
+if [[ -d "/workspace" ]]; then 
+    ln -sf /workspace/.cache $HOME/.cache 
+fi
+
 
 # uv related setup >>>>>
 . "$HOME/.local/bin/env"
 if [ -d .venv ]; then 
     source .venv/bin/activate 
+    alias pip="uv pip"
+    alias pip3="uv pip"
 fi
 
 cd() {
@@ -42,6 +48,8 @@ cd() {
         fi
     }
 }
+
+export UV_CACHE_DIR=/workspace/.cache
 # uv related setup <<<<<
 
 export NVM_DIR="$HOME/.nvm"
