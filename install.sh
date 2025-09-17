@@ -31,5 +31,6 @@ ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 
 mkdir -p "$HOME/.config" && ln -sfn "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+mkdir -p "$HOME/.config/htop" && ln -sfn "$DOTFILES_DIR/htoprc" "$HOME/.config/htop/"
 
 echo "Dotfiles installed!"
