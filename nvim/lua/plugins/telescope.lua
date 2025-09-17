@@ -5,7 +5,7 @@ local config_func = function()
     end
 
     telescope.load_extension('media_files')
-    telescope.load_extension('file_browser')
+    -- telescope.load_extension('file_browser')
 
     local actions = require "telescope.actions"
 
