@@ -92,3 +92,20 @@ vim.api.nvim_set_hl(0, 'MsgArea', {
 vim.api.nvim_set_hl(0, 'TelescopeSelection', {
   bg = '#333333'
 })
+
+
+-- Functions (make them stand out more)
+vim.api.nvim_set_hl(0, 'Function', { fg = '#87afd7', bold = false })
+
+-- Variables (green color)
+vim.api.nvim_set_hl(0, 'Identifier', { fg = '#98d982' })
+
+-- Strings (warmer tint, easier to spot)
+-- vim.api.nvim_set_hl(0, 'String', { fg = '#d7af5f' })
+
+-- Search matches
+vim.api.nvim_set_hl(0, 'Search', { fg = '#ffffff', bg = '#444444', bold = true })
+
+-- Current search match
+vim.api.nvim_set_hl(0, 'IncSearch', { fg = '#000000', bg = '#ff9e54', bold = true })
+

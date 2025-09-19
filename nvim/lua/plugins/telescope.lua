@@ -20,6 +20,8 @@ local config_func = function()
 
         mappings = {
           i = {
+            ["<A-d>"] = actions.delete_buffer,
+
             ["<C-n>"] = actions.cycle_history_next,
             ["<C-p>"] = actions.cycle_history_prev,
 
@@ -51,6 +53,8 @@ local config_func = function()
           },
 
           n = {
+            ["<A-d>"] = actions.delete_buffer,
+
             ["<esc>"] = actions.close,
             ["<CR>"] = actions.select_default,
             ["<C-x>"] = actions.select_horizontal,

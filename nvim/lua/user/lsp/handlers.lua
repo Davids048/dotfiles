@@ -9,9 +9,16 @@ M.setup = function()
 	{ name = "DiagnosticSignInfo", text = "I" },
   }
 
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
+  vim.diagnostic.config({
+      signs = {
+          text = {
+              [vim.diagnostic.severity.ERROR] = "E",
+              [vim.diagnostic.severity.WARN] = "W",
+              [vim.diagnostic.severity.INFO] = "I",
+              [vim.diagnostic.severity.HINT] = "H",
+          }
+      }
+  })
 
   local config = {
     -- disable virtual text
