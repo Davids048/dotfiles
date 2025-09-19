@@ -9,6 +9,7 @@ apt install -y python3.12-venv
 apt install ripgrep
 
 if [[ -d "/workspace" ]]; then 
+    rm -rf ~/.cache
     ln -sf /workspace/.cache $HOME/
 fi
 
