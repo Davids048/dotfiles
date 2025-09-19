@@ -41,13 +41,11 @@ if [ -d .venv ]; then
     alias pip3="uv pip"
 fi
 
-cd() {
-    builtin cd "$@" && {
-        if [ -f .venv/bin/activate ]; then
-# source .venv/bin/activate  # commented out by conda initialize
-            echo ""
-        fi
-    }
+ua() {
+    if [ -f .venv/bin/activate ]; then
+        source .venv/bin/activate  # commented out by conda initialize
+        echo "Activated .venv"
+    fi
 }
 
 export UV_CACHE_DIR=/workspace/.cache
