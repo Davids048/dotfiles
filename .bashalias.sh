@@ -1,3 +1,7 @@
+# >>> Prompt Setup >>>
+PS1='\[\e[32m\]\u@\h:\[\e[34m\]\w\[\e[0m\]\n-> '
+
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

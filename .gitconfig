@@ -5,6 +5,9 @@
 [init]
     defaultBranch = main
 
+[core]
+    editor = vim
+
 [alias]
     stat = status
     st = status
