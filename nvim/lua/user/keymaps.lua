@@ -30,10 +30,6 @@ keymap("n", "<leader>E", ":NvimTreeClose<cr>", opts)
 
 
 -- Resize with arrows
--- keymap("n", "<S-Up>", ":resize +2<CR>", opts)
--- keymap("n", "<S-Down>", ":resize -2<CR>", opts)
--- keymap("n", "<S-Left>", ":vertical resize -2<CR>", opts)
--- keymap("n", "<S-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-Up>", "<cmd>lua vim.cmd(vim.fn.winnr() == vim.fn.winnr('j') and 'resize +2' or 'resize -2')<CR>", opts)
 keymap("n", "<S-Down>", "<cmd>lua vim.cmd(vim.fn.winnr() == vim.fn.winnr('k') and 'resize +2' or 'resize -2')<CR>", opts)
 keymap("n", "<S-Left>", "<cmd>lua vim.cmd(vim.fn.winnr() == vim.fn.winnr('l') and 'vertical resize +2' or 'vertical resize -2')<CR>", opts)
@@ -63,24 +59,21 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope --
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
-keymap("n", "<leader>tf", "<cmd>Telescope file_browser<cr>", opts)
+keymap("n", "<leader>tf", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = true }))<cr>", opts)
 keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>tr", "<cmd>Telescope lsp_references<cr>", opts)
+keymap("n", "<leader>d", "<cmd>Telescope diagnostics<cr>", opts)
+keymap("n", "<leader>td", "<cmd>Telescope lsp_definitions<cr>", opts)
+
 keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers({sort_mru = true, select_current = true})<cr>", opts)
 -- Symbols
 keymap("n", "<leader>s", ":lua require('telescope.builtin').lsp_document_symbols({sorting_strategy='ascending', show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'constructor'}})<cr>", opts)
 -- More symbols
 keymap("n", "<leader>vs", ":lua require('telescope.builtin').lsp_document_symbols({sorting_strategy='ascending', show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'variable', 'constructor', 'field', 'property'}})<cr>", opts)
 keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
-keymap("n", "<leader>td", "<cmd>Telescope diagnostics<cr>", opts)
 
 
 -- RecentDir related keymap

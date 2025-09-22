@@ -101,7 +101,7 @@ local config_func = function()
             -- filetypes whitelist
             -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
             filetypes = {"png", "webp", "jpg", "jpeg"},
-            find_cmd = "rg" -- find command (defaults to `fd`)
+            find_cmd = "rg -uu" -- find command (defaults to `fd`)
           }
         -- Your extension configuration goes here:
         -- extension_name = {
