@@ -1,0 +1,35 @@
+snippet log_conf "logging configs"
+    import datetime 
+    import os 
+    import logging 
+    import sys
+
+
+    def setup_logging(logger, log_file=None, level=logging.INFO):
+        """Setup a logger with consistent formatting"""
+        logger.propagate = False
+
+        if not logger.handlers:
+            formatter = logging.Formatter(
+                '%(asctime)s - %(filename).10s.:%(lineno)d - %(levelname)s - %(message)s',
+                datefmt='%Y-%m-%d %H:%M:%S'
+            )
+
+            # log to console 
+            console_handler = logging.StreamHandler(sys.stdout) 
+            console_handler.setFormatter(formatter) 
+            logger.addHandler(console_handler) 
+
+            # log to file 
+            if log_file:
+                # create unique log files
+                if os.path.exists(log_file):
+                    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                    log_file = log_file.replace(".log", f"_{timestamp}.log")
+                file_handler = logging.FileHandler(log_file, mode='w', encoding='utf-8')
+                file_handler.setFormatter(formatter) 
+                logger.addHandler(file_handler) 
+
+            logger.setLevel(level)
+
+
