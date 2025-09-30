@@ -23,7 +23,7 @@ fi
 # install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-source install.sh
+source runpod-install.sh
 source nodejs.sh
 source .bashrc
 
