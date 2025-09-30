@@ -40,7 +40,7 @@ local config_func = function()
 
     local branch = {
         "branch",
-        icons_enabled = true,
+        icons_enabled = false,
         icon = "",
     }
 
@@ -66,7 +66,7 @@ local config_func = function()
 
     lualine.setup({
         options = {
-            icons_enabled = true,
+            icons_enabled = false,
             theme = "dracula",
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
@@ -106,6 +106,6 @@ local config_func = function()
 
 return {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    -- dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = config_func,
 }

@@ -9,9 +9,16 @@ local config_func = function()
 
     local actions = require "telescope.actions"
 
+    local borderchars = {
+        prompt = { "-", "|", "-", "|", "+", "+", "+", "+" },
+        results = { "-", "|", "-", "|", "+", "+", "+", "+" },
+        preview = { "-", "|", "-", "|", "+", "+", "+", "+" },
+    }
 
     telescope.setup {
         defaults = {
+        border = true,
+        borderchars = borderchars,
         initial_mode = "normal",
         prompt_prefix = "",
         selection_caret = "->",

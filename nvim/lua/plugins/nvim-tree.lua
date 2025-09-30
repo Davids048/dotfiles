@@ -66,29 +66,32 @@ local config_func = function()
         root_folder_modifier = ":t",
         icons = {
             show = {
-                file = true,
+                file = false,
                 folder = true,
-                folder_arrow = true,
+                folder_arrow = false,
                 git = true,
             },
             glyphs = {
                 default = "",
-                symlink = "",
+                symlink = "~",
+                modified = "[+]",
                 git = {
-                    unstaged = "",
+                    unstaged = "[M]",
                     staged = "S",
-                    unmerged = "",
-                    renamed = "➜",
-                    deleted = "",
+                    unmerged = "[!]",
+                    renamed = "[R]",
+                    deleted = "[-]",
                     untracked = "[U]",
-                    ignored = "◌",
+                    ignored = "[*]",
                 },
                 folder = {
-                    default = "",
-                    open = "",
-                    empty = "",
-                    empty_open = "",
-                    symlink = "",
+                    -- arrow_closed = ">",
+                    -- arror_open = "v",
+                    default = ">",
+                    open = "V",
+                    empty = "[E]",
+                    empty_open = "[O*]",
+                    symlink = "~",
                 },
             }
         }
@@ -99,10 +102,8 @@ end
 
 return {
   "nvim-tree/nvim-tree.lua",
+  enabled=true,
   version = "*",
   lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
   config = config_func,
 }
