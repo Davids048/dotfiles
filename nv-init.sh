@@ -7,7 +7,8 @@ export XDG_CONFIG_HOME=$WORKSPACE/dotfiles
 export GIT_CONFIG_GLOBAL=$WORKSPACE/dotfiles/.gitconfig
 
 alias vim="VIMINIT='source $WORKSPACE/dotfiles/.vimrc' vim"
-alias nvim="$WORKSPACE/dotfiles/nvim-linux-arm64/bin/nvim"
+# alias nvim="$WORKSPACE/dotfiles/nvim-linux-arm64/bin/nvim"
+alias nvim="$HOME/nvim-linux-arm64/bin/nvim"
 alias tmux="tmux -f $WORKSPACE/dotfiles/.tmux.conf"
 alias uv="/opt/conda/bin/uv"
 
