@@ -89,8 +89,8 @@ local config_func = function()
                     -- arror_open = "v",
                     default = ">",
                     open = "V",
-                    empty = "[E]",
-                    empty_open = "[O*]",
+                    empty = "[e]",
+                    empty_open = "[o*]",
                     symlink = "~",
                 },
             }

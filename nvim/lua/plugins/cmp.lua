@@ -18,20 +18,21 @@ local config_func = function()
     end
 
     --   פּ ﯟ   some other good icons
+
     local kind_icons = {
-      Text = "󰊄",
-      Method = "m",
-      Function = "󰊕",
-      Constructor = "",
-      Field = "",
-      Variable = "󰫧",
-      Class = "",
-      Interface = "",
-      Module = "",
-      Property = "",
+      Text = "[tx]",
+      Method = "[m]",
+      Function = "f(*)",
+      Constructor = "[Cons]",
+      Field = ".{}",
+      Variable = "(x)",
+      Class = "[C]",
+      Interface = "(i)",
+      Module = "[M]",
+      Property = ".[]",
       Unit = "",
       Value = "",
-      Enum = "",
+      Enum = "[Enum]",
       Keyword = "󰌆",
       Snippet = "",
       Color = "",

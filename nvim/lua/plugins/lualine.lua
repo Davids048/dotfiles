@@ -12,7 +12,7 @@ local config_func = function()
         "diagnostics",
         sources = { "nvim_lsp" },
         sections = { "error", "warn" },
-        symbols = { error = " ", warn = " " },
+        symbols = { error = "[E]", warn = "[W]" },
         colored = false,
         update_in_insert = false,
         always_visible = true,
@@ -21,7 +21,7 @@ local config_func = function()
     local diff = {
         "diff",
         colored = false,
-        symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+        symbols = { added = "[+]", modified = "[~]", removed = "[-]" }, -- changes diff symbols
       cond = hide_in_width
     }
 
@@ -49,21 +49,6 @@ local config_func = function()
         padding = 0,
     }
 
-    -- cool function for progress
-    local progress = function()
-        local current_line = vim.fn.line(".")
-        local total_lines = vim.fn.line("$")
-        local chars = { "██", "▇▇", "▆▆", "▅▅", "▄▄", "▃▃", "▂▂", "▁▁", "__"}
-        local line_ratio = current_line / total_lines
-        local index = math.ceil(line_ratio * #chars)
-        return chars[index]
-    end
-
-    -- local spaces = function()
-    --     return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-    -- end
-
-
     lualine.setup({
         options = {
             icons_enabled = false,
@@ -74,7 +59,7 @@ local config_func = function()
             always_divide_middle = true,
         },
         sections = {
-            lualine_a = { branch, diagnostics },
+            lualine_a = { branch, diff },
             lualine_b = { mode },
             lualine_c = {
                 {
@@ -86,7 +71,7 @@ local config_func = function()
             lualine_x = { "encoding", "fileformat", "filetype" },
             -- lualine_x = { diff, spaces, "encoding", filetype },
             lualine_y = { location },
-            lualine_z = { progress },
+            lualine_z = { diagnostics },
         },
         inactive_sections = {
             lualine_a = {},
@@ -106,6 +91,5 @@ local config_func = function()
 
 return {
     'nvim-lualine/lualine.nvim',
-    -- dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = config_func,
 }
