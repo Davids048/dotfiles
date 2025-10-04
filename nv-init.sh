@@ -6,6 +6,10 @@ export HF_HUB_CACHE=$WORKSPACE/.cache/huggingface/hub
 export XDG_CONFIG_HOME=$WORKSPACE/dotfiles
 export GIT_CONFIG_GLOBAL=$WORKSPACE/dotfiles/.gitconfig
 
+# replace POSIX encoding
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 alias vim="VIMINIT='source $WORKSPACE/dotfiles/.vimrc' vim"
 # alias nvim="$WORKSPACE/dotfiles/nvim-linux-arm64/bin/nvim"
 alias nvim="$HOME/nvim-linux-arm64/bin/nvim"
