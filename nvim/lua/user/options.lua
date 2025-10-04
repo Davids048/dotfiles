@@ -35,7 +35,7 @@ vim.opt.listchars:append("trail:·")   -- or: vim.opt.listchars:append{ trail = 
 
 
 vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
-vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
+vim.opt.signcolumn = "yes:2"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = true								-- display lines as one long line
 vim.opt.colorcolumn = "80"						-- add a mark at col 80
 vim.opt.linebreak = true
