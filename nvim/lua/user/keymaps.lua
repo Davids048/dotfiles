@@ -64,10 +64,11 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>tf", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>tr", "<cmd>Telescope lsp_references<cr>", opts)
 keymap("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
 keymap("n", "<leader>vd", "<cmd>Telescope diagnostics<cr>", opts)
-keymap("n", "<leader>td", "<cmd>Telescope lsp_definitions<cr>", opts)
+keymap("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>", opts)
+keymap("n", "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", opts)
+keymap("n", "<leader>fi", "<cmd>Telescope lsp_implementations<cr>", opts)
 
 keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers({sort_mru = true, select_current = true})<cr>", opts)
 -- Symbols
