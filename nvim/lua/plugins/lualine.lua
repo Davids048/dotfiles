@@ -92,4 +92,5 @@ local config_func = function()
 return {
     'nvim-lualine/lualine.nvim',
     config = config_func,
+    enabled = false,
 }

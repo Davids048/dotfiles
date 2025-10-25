@@ -18,6 +18,7 @@ require("user.conda-envs")
 -- require("user.lsp_signature")
 -- require("user.highlight")
 require("user.large-file-warning")
+require("user.native-statusline")
 
 
 
