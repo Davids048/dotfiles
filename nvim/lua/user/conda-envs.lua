@@ -64,7 +64,7 @@ local function activate_conda_env(env)
         local opts = {
             on_attach = require("user.lsp.handlers").on_attach,
             capabilities = require("user.lsp.handlers").capabilities,
-	    }
+        }
         local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. "pyright")
         if require_ok then 
             opts = vim.tbl_deep_extend('force', conf_opts, opts)
@@ -76,7 +76,7 @@ local function activate_conda_env(env)
             end,
         })
         -- Load in all options.
-        require('lspconfig').pyright.setup(opts)
+        vim.lsp.config.pyright.setup(opts)
         vim.cmd("LspRestart") -- Restart the language server to apply changes
     end
 end
