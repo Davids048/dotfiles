@@ -76,7 +76,8 @@ local function activate_conda_env(env)
             end,
         })
         -- Load in all options.
-        vim.lsp.config.pyright.setup(opts)
+        -- vim.lsp.config.pyright.setup(opts)
+        vim.lsp.config("pyright", opts)
         vim.cmd("LspRestart") -- Restart the language server to apply changes
     end
 end

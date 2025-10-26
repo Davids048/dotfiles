@@ -26,7 +26,7 @@ local config_func = function()
     },
     update_focused_file = {
         enable = true,
-        update_cwd = true,
+        update_cwd = false,
         ignore_list = {},
     },
     sync_root_with_cwd = true,
@@ -38,28 +38,20 @@ local config_func = function()
     },
     view = {
         width = {
-			min = 40,
-			max = 100,
-		},
+            min = 40,
+            max = 100,
+        },
         side = "left",
-		centralize_selection = false,
+        centralize_selection = false,
 
-        -- mappings = {
-        --     custom_only = false,
-        --     list = {
-        --     { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        --     { key = "h", cb = tree_cb "close_node" },
-        --     { key = "v", cb = tree_cb "vsplit" },
-        --     },
-        -- },
         number = true,
         relativenumber = false,
     },
     actions = {
-		open_file = {
-			quit_on_open = false,
-			window_picker = { enable = true },
-		}
+        open_file = {
+            quit_on_open = false,
+            window_picker = { enable = true },
+        }
     },
     renderer = {
         highlight_git = "all",

@@ -8,6 +8,7 @@ vim.opt.fileencoding = "utf-8"                  -- the encoding written to a fil
 vim.opt.hlsearch = true                         -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true                       -- ignore case in search patterns
 vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
+vim.opt.mousescroll = "ver:1,hor:6"
 vim.opt.pumheight = 10                          -- pop up menu height
 vim.opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
 vim.opt.showtabline = 2                         -- always show tabs
@@ -65,4 +66,5 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     end,
 })
 
-
+vim.o.wildmenu = true
+vim.o.wildmode = 'longest:full,full'

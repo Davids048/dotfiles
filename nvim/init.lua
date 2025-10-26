@@ -19,7 +19,7 @@ require("user.conda-envs")
 -- require("user.highlight")
 require("user.large-file-warning")
 require("user.native-statusline")
-
+require("user.fmtp")
 
 
 -- require("user.cmp")
