@@ -92,6 +92,8 @@ end, { silent = true })
 -- Gitsigns
 keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", opts)
 keymap("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", opts)
+keymap("n", "<leader>[", "<cmd>Gitsigns prev_hunk<cr>", opts)
+keymap("n", "<leader>]", "<cmd>Gitsigns next_hunk<cr>", opts)
 
 
 -- aerial
