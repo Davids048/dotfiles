@@ -20,6 +20,14 @@ let mapleader=" "
 nnoremap <Leader>e :Lexplore<CR>
 nnoremap <Leader>E :Lexplore<CR>
 let g:netrw_banner=0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
+let g:netrw_altv = 1
+augroup netrw_line_numbers
+  autocmd!
+  autocmd FileType netrw setlocal number 
+augroup END
+
 
 
 "====Search===="
@@ -48,4 +56,22 @@ set statusline+=\ [%{&ff}]      " File format
 set statusline+=\ %p%%          " Percentage through file
 set statusline+=\ %l:%c         " Line:Column
 set statusline+=\ [%L]          " Total lines
+
+
+"=========== Plugin =============" 
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+call plug#end()
+
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>tg :Rg<CR>
+nnoremap <leader>b :Buffers<CR>
+
+"======osc52======"
+nmap y <Plug>OSCYankOperator
+nmap yy y_
+vmap y <Plug>OSCYankVisual
 
