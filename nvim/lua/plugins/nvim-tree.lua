@@ -54,11 +54,13 @@ local config_func = function()
         }
     },
     renderer = {
+        indent_markers = { enable = true, },
         highlight_git = "all",
         root_folder_modifier = ":t",
         icons = {
+            git_placement = "after",
             show = {
-                file = false,
+                file = true,
                 folder = true,
                 folder_arrow = false,
                 git = true,
@@ -69,7 +71,7 @@ local config_func = function()
                 modified = "[+]",
                 git = {
                     unstaged = "[M]",
-                    staged = "S",
+                    staged = "[S]",
                     unmerged = "[!]",
                     renamed = "[R]",
                     deleted = "[-]",
@@ -80,7 +82,7 @@ local config_func = function()
                     -- arrow_closed = ">",
                     -- arror_open = "v",
                     default = ">",
-                    open = "V",
+                    open = "v",
                     empty = "[e]",
                     empty_open = "[o*]",
                     symlink = "~",
