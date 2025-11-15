@@ -120,5 +120,6 @@ return {
         'nvim-lua/plenary.nvim' ,
         'nvim-telescope/telescope-media-files.nvim',
     },
-    config = config_func
+    config = config_func,
+    enabled=false
 }

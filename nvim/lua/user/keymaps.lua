@@ -61,23 +61,42 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 
 -- Telescope --
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>tf", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
-keymap("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
-keymap("n", "<leader>vd", "<cmd>Telescope diagnostics<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>", opts)
-keymap("n", "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", opts)
-keymap("n", "<leader>fi", "<cmd>Telescope lsp_implementations<cr>", opts)
+-- keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
+-- keymap("n", "<leader>tf", "<cmd>Telescope find_files<cr>", opts)
+-- keymap("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
+-- keymap("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
+-- keymap("n", "<leader>vd", "<cmd>Telescope diagnostics<cr>", opts)
+-- keymap("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>", opts)
+-- keymap("n", "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", opts)
+-- keymap("n", "<leader>fi", "<cmd>Telescope lsp_implementations<cr>", opts)
 
-keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers({sort_mru = true, select_current = true})<cr>", opts)
+-- keymap("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers({sort_mru = true, select_current = true})<cr>", opts)
 -- Symbols
-keymap("n", "<leader>s", ":lua require('telescope.builtin').lsp_document_symbols({sorting_strategy='ascending', show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'constructor'}})<cr>", opts)
+-- keymap("n", "<leader>s", ":lua require('telescope.builtin').lsp_document_symbols({sorting_strategy='ascending', show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'constructor'}})<cr>", opts)
 -- More symbols
-keymap("n", "<leader>vs", ":lua require('telescope.builtin').lsp_document_symbols({sorting_strategy='ascending', show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'variable', 'constructor', 'field', 'property'}})<cr>", opts)
-keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
+-- keymap("n", "<leader>vs", ":lua require('telescope.builtin').lsp_document_symbols({sorting_strategy='ascending', show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'variable', 'constructor', 'field', 'property'}})<cr>", opts)
+-- keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
+
+-- Fzf --
+keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<cr>", opts)
+keymap("n", "<leader>tf", "<cmd>lua require('fzf-lua').files()<cr>", opts)
+keymap("n", "<leader>tg", "<cmd>lua require('fzf-lua').live_grep()<cr>", opts)
+keymap("n", "<leader>fg", "<cmd>lua require('fzf-lua').live_grep()<cr>", opts)
+keymap("n", "<leader>fz", "<cmd>lua require('fzf-lua').blines()<cr>", opts)
+keymap("n", "<leader>d", "<cmd>lua require('fzf-lua').diagnostics_document()<cr>", opts)
+keymap("n", "<leader>vd", "<cmd>lua require('fzf-lua').diagnostics_workspace()<cr>", opts)
+keymap("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<cr>", opts)
+keymap("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_definitions()<cr>", opts)
+keymap("n", "<leader>fi", "<cmd>lua require('fzf-lua').lsp_implementations()<cr>", opts)
+
+keymap("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<cr>", opts)
+-- Symbols
+keymap("n", "<leader>s", "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", opts)
+-- More symbols (same as above for fzf-lua, filtering is done in the picker)
+keymap("n", "<leader>vs", "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", opts)
+keymap("n", "<leader>gs", "<cmd>lua require('fzf-lua').git_status()<cr>", opts)
 
 
 -- RecentDir related keymap
@@ -102,3 +121,6 @@ keymap("n", "<leader>a", "<cmd>AerialToggle!<CR>", opts)
 -- Markdown preview
 keymap("n", "<leader>p", "<cmd>MarkdownPreview<cr>", opts)
 keymap("n", "<leader>P", "<cmd>MarkdownPreview<cr>", opts)
+
+-- folding
+

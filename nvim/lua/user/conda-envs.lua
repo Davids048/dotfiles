@@ -1,9 +1,5 @@
 local lfs = vim.loop -- Filesystem access (libuv)
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local conf = require("telescope.config").values
+local fzf = require("fzf-lua")
 local config_file_path = vim.fn.stdpath("config") .. "/config/conda_env_config"
 
 -- Ensure the config directory exists
@@ -95,30 +91,26 @@ local function pick_conda_env(base_dirs)
         return
     end
 
-    pickers.new({}, {
-        prompt_title = "Select Conda Environment",
-        finder = finders.new_table({
-            results = conda_envs,
-            entry_maker = function(env)
-                return {
-                    value = env,
-                    display = env.name,
-                    ordinal = env.name,
-                }
+    -- Create a table mapping env names to env objects
+    local env_map = {}
+    local env_names = {}
+    for _, env in ipairs(conda_envs) do
+        table.insert(env_names, env.name)
+        env_map[env.name] = env
+    end
+
+    fzf.fzf_exec(env_names, {
+        prompt = "Select Conda Environment> ",
+        actions = {
+            ["default"] = function(selected)
+                if selected and #selected > 0 then
+                    local env_name = selected[1]
+                    local env = env_map[env_name]
+                    activate_conda_env(env)
+                end
             end,
-        }),
-        sorter = conf.generic_sorter({}),
-        attach_mappings = function(prompt_bufnr, map)
-            local function select_env()
-                local selected = action_state.get_selected_entry()
-                actions.close(prompt_bufnr)
-                activate_conda_env(selected.value)
-            end
-            map("i", "<CR>", select_env)
-            map("n", "<CR>", select_env)
-            return true
-        end,
-    }):find()
+        },
+    })
 end
 
 -- Function to prompt user for a base directory
