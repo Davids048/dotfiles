@@ -39,7 +39,7 @@ vim.api.nvim_set_hl(0, 'TelescopeSelection', {
 vim.api.nvim_set_hl(0, 'Function', { fg = '#87afd7', bold = false })
 
 -- Variables (green color)
-vim.api.nvim_set_hl(0, 'Identifier', { fg = '#98d982' })
+vim.api.nvim_set_hl(0, 'Identifier', { fg = '#b3d9a7' })
 
 -- Strings (warmer tint, easier to spot)
 vim.api.nvim_set_hl(0, 'String', { fg = '#d7af5f' })
