@@ -124,3 +124,18 @@ keymap("n", "<leader>P", "<cmd>MarkdownPreview<cr>", opts)
 
 -- folding
 
+-- Copy Path
+vim.keymap.set("n", "<leader>cp", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print("Copied: " .. path)
+end, { desc = "Copy file path" })
+
+vim.keymap.set("n", "<leader>cr", function()
+  vim.fn.setreg("+", vim.fn.expand("%"))
+end, { desc = "Copy relative path" })
+
+vim.keymap.set("n", "<leader>cf", function()
+  vim.fn.setreg("+", vim.fn.expand("%:t"))
+end, { desc = "Copy filename" })
+

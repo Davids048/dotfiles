@@ -52,6 +52,10 @@ vim.api.nvim_set_hl(0, 'IncSearch', { fg = '#000000', bg = '#ff9e54', bold = tru
 
 -- NvimTree folder names
 vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = '#87afd7' })
+vim.api.nvim_set_hl(0, 'NvimTreeFolderIcon', { fg = '#87afd7' })
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderIcon', { fg = '#87afd7' })
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = '#87afd7' })
+
 vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", { fg = "#3a3a3a" })
 
 vim.api.nvim_set_hl(0, "IblIndent", { fg = "#3a3a3a" })
