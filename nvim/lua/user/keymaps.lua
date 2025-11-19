@@ -139,3 +139,8 @@ vim.keymap.set("n", "<leader>cf", function()
   vim.fn.setreg("+", vim.fn.expand("%:t"))
 end, { desc = "Copy filename" })
 
+
+vim.keymap.set("n", "<leader>z", function()
+  vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle line wrap" })
+

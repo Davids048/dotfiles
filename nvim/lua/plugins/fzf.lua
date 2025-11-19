@@ -1,7 +1,19 @@
 local config = {
   fzf_opts = {
     ["--cycle"] = true,      
+    ["--header-lines"]=false
   },
+  previewers = {
+      default= 'cat'
+  },
+    winopts = {
+      preview = {
+        layout = 'vertical',
+      },
+    },
+    grep = {
+      regex = true
+    }
 }
 
 return {
