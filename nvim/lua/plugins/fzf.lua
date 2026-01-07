@@ -1,28 +1,33 @@
-local config = {
-  fzf_opts = {
-    ["--cycle"] = true,      
-    ["--header-lines"]=false
-  },
-  previewers = {
-      default= 'cat'
-  },
-    winopts = {
-      preview = {
-        layout = 'vertical',
-      },
-    },
-    grep = {
-      regex = true
-    }
-}
-
 return {
   "ibhagwan/fzf-lua",
-  -- optional for icon support
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- or if using mini.icons/mini.nvim
-  -- dependencies = { "nvim-mini/mini.icons" },
   config = function()
-    require("fzf-lua").setup(config)
+    local actions = require("fzf-lua.actions")
+
+    require("fzf-lua").setup({
+      fzf_opts = {
+        ["--cycle"] = "",
+        ["--header-lines"] = "0",
+      },
+      buffers = {
+        actions = {
+          ["ctrl-backspace"] = { fn = actions.buf_del, reload = true },
+        },
+      },
+      previewers = {
+        default = {
+          cat = {},
+        },
+      },
+      winopts = {
+        preview = {
+          layout = "vertical",
+        },
+      },
+      grep = {
+        regex = true,
+      },
+    })
   end,
 }
+
