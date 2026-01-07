@@ -89,7 +89,10 @@ keymap("n", "<leader>d", "<cmd>lua require('fzf-lua').diagnostics_document()<cr>
 keymap("n", "<leader>vd", "<cmd>lua require('fzf-lua').diagnostics_workspace()<cr>", opts)
 keymap("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<cr>", opts)
 keymap("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_definitions()<cr>", opts)
+keymap("n", "<leader>gd", "<cmd>lua require('fzf-lua').lsp_definitions()<cr>", opts)
+keymap("n", "<leader>fD", "<cmd>lua require('fzf-lua').lsp_declarations()<cr>", opts)
 keymap("n", "<leader>fi", "<cmd>lua require('fzf-lua').lsp_implementations()<cr>", opts)
+keymap("n", "<leader>fu", "<cmd>lua require('fzf-lua').resume()<cr>", opts)
 
 keymap("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<cr>", opts)
 -- Symbols
@@ -109,11 +112,13 @@ end, { silent = true })
 
 
 -- Gitsigns
-keymap("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", opts)
+keymap("n", "<leader>gbl", "<cmd>Gitsigns blame_line<cr>", opts)
+keymap("n", "<leader>gb", "<cmd>Gitsigns blame<cr>", opts)
 keymap("n", "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", opts)
+keymap("n", "<leader>g+", "<cmd>Gitsigns stage_hunk<cr>", opts)
+keymap("n", "<leader>g-", "<cmd>Gitsigns reset_hunk<cr>", opts)
 keymap("n", "<leader>[", "<cmd>Gitsigns prev_hunk<cr>", opts)
 keymap("n", "<leader>]", "<cmd>Gitsigns next_hunk<cr>", opts)
-
 
 -- aerial
 keymap("n", "<leader>a", "<cmd>AerialToggle!<CR>", opts)
@@ -139,8 +144,20 @@ vim.keymap.set("n", "<leader>cf", function()
   vim.fn.setreg("+", vim.fn.expand("%:t"))
 end, { desc = "Copy filename" })
 
+vim.keymap.set("n", "<leader>cl", function()
+  local path = vim.fn.expand("%:p")
+  local lineno = vim.fn.line(".")
+  local result = "@" .. path .. "#" .. lineno
+  vim.fn.setreg("+", result)
+  print("Copied: " .. result)
+end, { desc = "Copy path#lineno" })
+
 
 vim.keymap.set("n", "<leader>z", function()
   vim.wo.wrap = not vim.wo.wrap
 end, { desc = "Toggle line wrap" })
 
+
+vim.keymap.set("i", "<M-BS>", "<C-w>", { noremap = true })
+vim.keymap.set("n", "<leader>r", ":e!<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>w", ":w<cr>", { noremap = true })
