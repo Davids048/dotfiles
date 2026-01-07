@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd('FileType', {
       -- Replace the whole "Find the matching arglist parens..." section with this:
 
       local function find_pair(line)
-        local ps, bs = {}, {}
+        local ps, bs, brs = {}, {}, {}
         local in_str, q, esc = false, nil, false
         local last = { l=nil, r=nil, opener=nil, closer=nil }
         for i = 1, #line do
@@ -67,6 +67,10 @@ vim.api.nvim_create_autocmd('FileType', {
             elseif ch == '}' then
               local lft = table.remove(bs)
               if lft then last = { l=lft, r=i, opener='{', closer='}' } end
+            elseif ch == '[' then table.insert(brs, i)
+            elseif ch == ']' then
+              local lft = table.remove(brs)
+              if lft then last = { l=lft, r=i, opener='[', closer=']' } end
             end
           end
         end
@@ -75,7 +79,7 @@ vim.api.nvim_create_autocmd('FileType', {
       
       local l, r, opener, closer = find_pair(line)
       if not l or not r then
-        vim.notify("PySplitArgs: no () or {} pair found on this line.", vim.log.levels.WARN)
+        vim.notify("PySplitArgs: no (), {}, or [] pair found on this line.", vim.log.levels.WARN)
         return
       end
       
