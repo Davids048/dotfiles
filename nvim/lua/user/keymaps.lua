@@ -92,6 +92,7 @@ keymap("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_definitions()<cr>", o
 keymap("n", "<leader>gd", "<cmd>lua require('fzf-lua').lsp_definitions()<cr>", opts)
 keymap("n", "<leader>fD", "<cmd>lua require('fzf-lua').lsp_declarations()<cr>", opts)
 keymap("n", "<leader>fi", "<cmd>lua require('fzf-lua').lsp_implementations()<cr>", opts)
+keymap("n", "<leader>fp", "<cmd>lua require('user.preview-impl').preview_definition()<cr>", opts)
 keymap("n", "<leader>fu", "<cmd>lua require('fzf-lua').resume()<cr>", opts)
 
 keymap("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<cr>", opts)

@@ -9,3 +9,4 @@ vim.o.statusline = table.concat({
   ' [%{&filetype}]',
 })
 
+vim.opt.winbar = "%f %m"

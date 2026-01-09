@@ -22,16 +22,16 @@ vim.g.python_indent = {
 
 
 return {
-	settings = {
+    settings = {
 
     python = {
       analysis = {
-        typeCheckingMode = "on"
+        typeCheckingMode = "standard"
       },
-	  pythonPath = vim.g.python3_host_prog,
+      pythonPath = vim.g.python3_host_prog,
     },
-	analysis = {
-		extraPaths = {vim.fn.getcwd()},
-	}
-	},
+    analysis = {
+        extraPaths = {vim.fn.getcwd()},
+    }
+    },
 }

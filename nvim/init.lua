@@ -13,5 +13,6 @@ require("user.large-file-warning")
 require("user.native-statusline")
 require("user.fmtp")
 require("user.python-debug")
+require("user.preview-impl")
 
 
