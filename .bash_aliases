@@ -23,6 +23,7 @@ alias l='ls -CF'
 alias nvidia-w="watch -n 0.5 nvidia-smi"
 
 
+
 if [ -d .venv ]; then 
 # source .venv/bin/activate   # commented out by conda initialize
     alias pip="uv pip"
