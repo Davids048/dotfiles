@@ -97,7 +97,11 @@ keymap("n", "<leader>fu", "<cmd>lua require('fzf-lua').resume()<cr>", opts)
 
 keymap("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<cr>", opts)
 -- Symbols
-keymap("n", "<leader>s", "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", opts)
+keymap("n", "<leader>s", "<cmd>lua require('fzf-lua').lsp_document_symbols({show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'constructor'}})<cr>", opts)
+keymap("n", "<leader>s",
+  "<cmd>lua require('fzf-lua').lsp_document_symbols({ show_line = true, symbols = { 'function', 'method', 'class', 'module', 'interface', 'struct', 'constructor' }, filter = function(sym) return sym.kind ~= vim.lsp.protocol.SymbolKind.Variable and sym.kind ~= vim.lsp.protocol.SymbolKind.Field and sym.kind ~= vim.lsp.protocol.SymbolKind.Property end })<cr>", opts)
+
+keymap("n", "<leader>vs", "<cmd>lua require('fzf-lua').lsp_document_symbols({show_line = true, symbols = {'function', 'method', 'class', 'module', 'interface', 'struct', 'variable', 'constructor', 'field', 'property'}})<cr>", opts)
 -- More symbols (same as above for fzf-lua, filtering is done in the picker)
 keymap("n", "<leader>vs", "<cmd>lua require('fzf-lua').lsp_document_symbols()<cr>", opts)
 keymap("n", "<leader>gs", "<cmd>lua require('fzf-lua').git_status()<cr>", opts)
