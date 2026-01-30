@@ -1,5 +1,6 @@
 vim.o.laststatus = 2
 vim.o.statusline = table.concat({
+  '[~%{winwidth(0) > 80 && system("git branch --show-current 2>/dev/null | tr -d \'\\n\'") != "" ? system("git branch --show-current 2>/dev/null | tr -d \'\\n\'") : ""}]',
   '[%f]',
   '%{&modified?" [+]":""}',      -- show [+] if modified
   '%{&readonly?" [RO]":""}',     -- show [RO] if readonly

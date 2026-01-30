@@ -157,6 +157,14 @@ vim.keymap.set("n", "<leader>cl", function()
   print("Copied: " .. result)
 end, { desc = "Copy path#lineno" })
 
+vim.keymap.set("v", "<leader>cl", function()
+  local path = vim.fn.expand("%:p")
+  local start_lno = vim.fn.line("'<")
+  local end_lno = vim.fn.line("'>")
+  local result = "@" .. path .. "#" .. start_lno .. "-" .. end_lno
+  vim.fn.setreg("+", result)
+  print("Copied: " .. result)
+end, { desc = "Copy path#lineno" })
 
 vim.keymap.set("n", "<leader>z", function()
   vim.wo.wrap = not vim.wo.wrap
