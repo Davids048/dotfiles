@@ -152,16 +152,22 @@ install_codex_agents() {
     return 0
   fi
 
-  if [[ -f "$target_file" && -s "$target_file" ]]; then
-    echo "Existing $target_file is not empty. Skipping automatic install."
-    echo "To install the dotfiles version manually, run:"
-    echo "  cp \"$source_file\" \"$target_file\""
-    return 0
+  if [[ -L "$target_file" ]]; then
+    if [[ "$(readlink -f "$target_file")" == "$source_file" ]]; then
+      echo "Existing $target_file already links to dotfiles source."
+      return 0
+    fi
+  elif [[ -f "$target_file" && -s "$target_file" ]]; then
+    backup_file "$target_file"
+    echo "Backed up existing $target_file before linking."
   fi
 
+  if [[ -e "$target_file" ]]; then
+    rm -f "$target_file"
+  fi
   mkdir -p "$codex_dir"
-  cp -f "$source_file" "$target_file"
-  echo "Installed $target_file from $source_file"
+  ln -s "$source_file" "$target_file"
+  echo "Linked $target_file -> $source_file"
 }
 
 tool_present() {

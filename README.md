@@ -28,7 +28,7 @@ The main design goal is to keep one tracked baseline while letting each machine 
   Untracked machine-local override file created by bootstrap when a machine does not have a tracked profile yet.
 
 - `ai/codex/AGENTS.md`
-  Shared Codex instructions. Bootstrap can install this into `~/.codex/AGENTS.md` when `~/.codex` exists.
+  Shared Codex instructions. Bootstrap links this file to `~/.codex/AGENTS.md` when `~/.codex` exists.
 
 - `bootstrap.sh`
   Interactive setup entrypoint for wiring a new machine into this repo.
