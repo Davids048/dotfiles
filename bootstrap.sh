@@ -138,6 +138,32 @@ ensure_runtime_links() {
   echo "Linked ~/.config/nvim and ~/.config/htop/htoprc"
 }
 
+install_codex_agents() {
+  local codex_dir="$HOME/.codex"
+  local source_file="$DOTFILES_DIR/ai/codex/AGENTS.md"
+  local target_file="$codex_dir/AGENTS.md"
+
+  if [[ ! -d "$codex_dir" ]]; then
+    return 0
+  fi
+
+  if [[ ! -f "$source_file" ]]; then
+    echo "Missing source file: $source_file"
+    return 0
+  fi
+
+  if [[ -f "$target_file" && -s "$target_file" ]]; then
+    echo "Existing $target_file is not empty. Skipping automatic install."
+    echo "To install the dotfiles version manually, run:"
+    echo "  cp \"$source_file\" \"$target_file\""
+    return 0
+  fi
+
+  mkdir -p "$codex_dir"
+  cp -f "$source_file" "$target_file"
+  echo "Installed $target_file from $source_file"
+}
+
 tool_present() {
   local tool="$1"
   case "$tool" in
@@ -217,6 +243,8 @@ main() {
   if prompt_yes_no "Link tracked Neovim and htop configs into ~/.config?" Y; then
     ensure_runtime_links
   fi
+
+  install_codex_agents
 
   echo
   echo "Checking core tool availability..."
