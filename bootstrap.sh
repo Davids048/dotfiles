@@ -46,6 +46,9 @@ write_stub() {
   local content="$2"
   backup_file "$target"
   mkdir -p "$(dirname "$target")"
+  if [[ -L "$target" ]]; then
+    rm -f "$target"
+  fi
   printf '%s\n' "$content" >"$target"
 }
 

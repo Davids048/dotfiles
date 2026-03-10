@@ -24,6 +24,27 @@ prepend_path() {
   esac
 }
 
+prepend_list_var() {
+  var_name=$1
+  entry=$2
+
+  [ -n "$var_name" ] || return 0
+  [ -n "$entry" ] || return 0
+
+  eval "current=\${$var_name:-}"
+  case ":$current:" in
+    *":$entry:"*) return 0 ;;
+  esac
+
+  if [ -n "$current" ]; then
+    eval "$var_name=\$entry:\$current"
+  else
+    eval "$var_name=\$entry"
+  fi
+
+  export "$var_name"
+}
+
 source_if_exists() {
   [ -r "$1" ] && . "$1"
 }
@@ -89,6 +110,15 @@ if [ -n "${PATH_PREPENDS:-}" ]; then
   IFS=:
   for dir in $PATH_PREPENDS; do
     [ -d "$dir" ] && prepend_path "$dir"
+  done
+  IFS=$old_ifs
+fi
+
+if [ -n "${LD_LIBRARY_PATH_PREPENDS:-}" ]; then
+  old_ifs=$IFS
+  IFS=:
+  for dir in $LD_LIBRARY_PATH_PREPENDS; do
+    [ -d "$dir" ] && prepend_list_var LD_LIBRARY_PATH "$dir"
   done
   IFS=$old_ifs
 fi

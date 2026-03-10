@@ -1,5 +1,7 @@
 # >>> Prompt Setup >>>
-PS1='\[\e[32m\]\u@\h:\[\e[34m\]\w\[\e[0m\]\n-> '
+if [ -n "${BASH_VERSION:-}" ]; then
+    PS1='\[\e[32m\]\u@\h:\[\e[34m\]\w\[\e[0m\]\n-> '
+fi
 
 
 # enable color support of ls and also add handy aliases
@@ -29,4 +31,3 @@ if [ -d .venv ]; then
     alias pip="uv pip"
     alias pip3="uv pip"
 fi
-
