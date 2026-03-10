@@ -1,25 +1,5 @@
-# >>> Prompt Setup >>>
-PS1='\[\e[32m\]\u@\h:\[\e[34m\]\w\[\e[0m\]\n-> '
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/workspace/miniconda3/bin/conda' 'shell.bash' 'hook' '--no-auto-activate-base' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/workspace/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/workspace/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/workspace/miniconda3/bin:$PATH"
-    fi
+if [ -r "$DOTFILES_DIR/bash/rc.sh" ]; then
+  . "$DOTFILES_DIR/bash/rc.sh"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-source .bashalias.sh
