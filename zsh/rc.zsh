@@ -20,6 +20,24 @@ if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
   source "$ZSH/oh-my-zsh.sh"
 fi
 
+if [[ $UID -ne 0 ]]; then
+  DOTFILES_PROMPT_USER='%F{green}%n%f'
+  DOTFILES_PROMPT_ARROW='%f-> %f'
+else
+  DOTFILES_PROMPT_USER='%F{red}%n%f'
+  DOTFILES_PROMPT_ARROW='%F{red}-> %f'
+fi
+
+if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
+  DOTFILES_PROMPT_HOST='%F{red}%M%f'
+else
+  DOTFILES_PROMPT_HOST='%F{green}%m%f'
+fi
+
+PROMPT="${DOTFILES_PROMPT_USER}%F{cyan}@${DOTFILES_PROMPT_HOST} %B%F{blue}%~%f%b \$(ruby_prompt_info) \$(git_prompt_info)
+${DOTFILES_PROMPT_ARROW}"
+RPROMPT='%(?..%F{red}%? ↵%f)'
+
 setopt histignorealldups
 setopt sharehistory
 setopt inc_append_history
@@ -88,15 +106,63 @@ if [[ -x "$CONDA_ROOT/bin/conda" ]]; then
 fi
 
 typeset -g MONITOR_SECONDS="${MONITOR_SECONDS:-5}"
+typeset -g DOTFILES_TITLE_MAX_PATH_LENGTH="${DOTFILES_TITLE_MAX_PATH_LENGTH:-40}"
 typeset -g DOTFILES_CMD_START_EPOCH=0
 typeset -g DOTFILES_CMD_LINE=""
 
-dotfiles_set_terminal_title() {
-  if [[ -n "$SSH_CONNECTION" ]]; then
-    printf '\033]0;%s@%s:%s\007' "$USER" "$HOST" "$PWD"
-  else
-    printf '\033]0;%s:%s\007' "${DOTFILES_MACHINE_NAME:-$HOST}" "$PWD"
+dotfiles_shorten_title_path() {
+  local path="$1"
+  local max_len="${DOTFILES_TITLE_MAX_PATH_LENGTH:-40}"
+  local display_path="${path/#$HOME/~}"
+
+  if (( ${#display_path} <= max_len )); then
+    print -r -- "$display_path"
+    return
   fi
+
+  local -a parts
+  local last parent shortened
+
+  parts=("${(@s:/:)display_path}")
+  last="${parts[-1]}"
+  parent="${parts[-2]}"
+
+  if [[ -n "$parent" && -n "$last" ]]; then
+    shortened=".../$parent/$last"
+  elif [[ -n "$last" ]]; then
+    shortened=".../$last"
+  else
+    shortened="$display_path"
+  fi
+
+  print -r -- "$shortened"
+}
+
+dotfiles_set_iterm_title() {
+  local title="$1"
+
+  if [[ -n "$TMUX" ]]; then
+    printf '\033Ptmux;\033\033]1;%s\007\033\\' "$title"
+    printf '\033Ptmux;\033\033]2;%s\007\033\\' "$title"
+    return
+  fi
+
+  printf '\033]1;%s\007' "$title"
+  printf '\033]2;%s\007' "$title"
+}
+
+dotfiles_set_terminal_title() {
+  local title_path title_host
+  title_path="$(dotfiles_shorten_title_path "$PWD")"
+
+  if [[ -n "$SSH_CONNECTION" ]]; then
+    title_host="${HOST%%.*}"
+  else
+    title_host="${DOTFILES_MACHINE_NAME:-$HOST}"
+    title_host="${title_host%%.*}"
+  fi
+
+  dotfiles_set_iterm_title "${title_host}:${title_path}"
 }
 
 dotfiles_title_precmd() {
