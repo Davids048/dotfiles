@@ -141,37 +141,9 @@ ensure_runtime_links() {
   echo "Linked ~/.config/nvim and ~/.config/htop/htoprc"
 }
 
-install_codex_agents() {
-  local codex_dir="$HOME/.codex"
-  local source_file="$DOTFILES_DIR/ai/codex/AGENTS.md"
-  local target_file="$codex_dir/AGENTS.md"
-
-  if [[ ! -d "$codex_dir" ]]; then
-    return 0
-  fi
-
-  if [[ ! -f "$source_file" ]]; then
-    echo "Missing source file: $source_file"
-    return 0
-  fi
-
-  if [[ -L "$target_file" ]]; then
-    if [[ "$(readlink -f "$target_file")" == "$source_file" ]]; then
-      echo "Existing $target_file already links to dotfiles source."
-      return 0
-    fi
-  elif [[ -f "$target_file" && -s "$target_file" ]]; then
-    backup_file "$target_file"
-    echo "Backed up existing $target_file before linking."
-  fi
-
-  if [[ -e "$target_file" ]]; then
-    rm -f "$target_file"
-  fi
-  mkdir -p "$codex_dir"
-  ln -s "$source_file" "$target_file"
-  echo "Linked $target_file -> $source_file"
-}
+# Source modular AI tool installers
+source "$DOTFILES_DIR/ai/codex/install.sh"
+source "$DOTFILES_DIR/ai/claude/install.sh"
 
 tool_present() {
   local tool="$1"
@@ -254,6 +226,7 @@ main() {
   fi
 
   install_codex_agents
+  install_claude_config
 
   echo
   echo "Checking core tool availability..."
