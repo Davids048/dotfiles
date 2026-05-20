@@ -1,3 +1,5 @@
 nvim-linux-x86_64*
 .env*
 profiles/local.sh
+opencode/package-lock.json
+opencode/*.backup-*
