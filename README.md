@@ -30,6 +30,12 @@ The main design goal is to keep one tracked baseline while letting each machine 
 - `ai/codex/AGENTS.md`
   Shared Codex instructions. Bootstrap links this file to `~/.codex/AGENTS.md` when `~/.codex` exists.
 
+- `opencode/`
+  Tracked OpenCode configuration. Bootstrap links this directory to `~/.config/opencode`.
+
+- `agents/skills/`
+  Tracked shared agent skills. Bootstrap links this directory to `~/.agents/skills` while leaving runtime state in `~/.agents` alone.
+
 - `bootstrap.sh`
   Interactive setup entrypoint for wiring a new machine into this repo.
 
@@ -69,7 +75,7 @@ Bootstrap does four things:
 
 1. lets you pick a tracked machine profile, or create `profiles/local.sh`
 2. rewrites the home entrypoint stubs
-3. links tracked Neovim and htop config into `~/.config`
+3. links tracked Neovim, htop, OpenCode, and agent-skill config into runtime locations
 4. checks for core tools: `zsh`, `tmux`, `nvim`, `fzf`, `rg`, and `yazi`
 
 Bootstrap writes backups to `~/.dotfiles-backups/<timestamp>/` before replacing home stubs.
@@ -149,5 +155,8 @@ If the machine uses the Bash-to-Zsh fallback, launching an interactive Bash shel
 ## Current Notes
 
 - This repo intentionally tracks shell, tmux, Vim/Neovim, Git, and htop setup.
+- It also tracks agent configuration that is source-like: OpenCode config, OpenCode agents/commands/skills, and shared `~/.agents/skills`.
+- It intentionally does not track agent runtime state such as `~/.agents/chat_data.json`, `~/.agents/jobs.json`, `~/.agents/runs/`, or `~/.agents/ra-runtime.env`.
+- `~/.opencode` is the local OpenCode install/package prefix on this machine (`~/.opencode/bin/opencode` is on `PATH`). Keep it outside the repo. The active user config path is `~/.config/opencode -> ~/dotfiles/opencode`.
 - It does not intentionally track app-owned runtime config/state such as `gh`, `github-copilot`, `go`, `lazygit`, `ngrok`, or `uv`.
 - The default setup path is `bootstrap.sh` plus machine profiles.

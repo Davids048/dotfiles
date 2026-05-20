@@ -1,5 +1,9 @@
 nvim-linux-x86_64*
 .env*
 profiles/local.sh
+opencode/node_modules/
+opencode/package.json
 opencode/package-lock.json
+opencode/bun.lock
 opencode/*.backup-*
+opencode/oh-my-openagent.json

@@ -44,6 +44,11 @@ Configured in `opencode.json`:
 Configured in `tui.json`:
 
 - Team TUI plugin: `file:///home/d1su/opencode-team-plugin/src/opencode-tui-plugin.ts`
+  - This is the same team plugin repository as above. OpenCode loads server
+    plugins and TUI plugins from separate config files/entrypoint shapes, so the
+    repo has one plugin implementation with separate server and TUI entrypoints.
+  - Options: `stateRoot` is `/home/d1su/.local/share/opencode-team-plugin`,
+    matching the server plugin.
 
 Auto-discovered from this config directory:
 
@@ -53,17 +58,11 @@ Auto-discovered from this config directory:
 - `plugins/notification.ts`
   - Sends terminal/tmux OSC notifications for `session.idle` and `permission.asked`
 
-## oh-my-openagent
-
-- Config: `oh-my-openagent.json`
-- OMO agents/categories use `openai/gpt-5.5` with variant `xhigh`
-- Cached package seen during audit: `~/.cache/opencode/packages/node_modules/oh-my-opencode/package.json`, version `4.1.1`
-
 ## Tracked config vs runtime state
 
 Tracked here:
 
-- `opencode.json`, `tui.json`, `oh-my-openagent.json`
+- `opencode.json`, `tui.json`
 - agent files under `agents/`
 - command files under `commands/`
 - local skills under `skills/`

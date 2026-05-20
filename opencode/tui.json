@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "plugin": [
+    [
+      "file:///home/d1su/opencode-team-plugin/src/opencode-tui-plugin.ts",
+      {
+        "stateRoot": "/home/d1su/.local/share/opencode-team-plugin"
+      }
+    ]
+  ]
+}

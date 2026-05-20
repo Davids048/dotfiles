@@ -1,16 +1,16 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "formatter": false,
+  "default_agent": "team-lead",
+  "plugin": [
+    [
+      "file:///home/d1su/opencode-team-plugin/src/index.ts",
+      {
+        "stateRoot": "/home/d1su/.local/share/opencode-team-plugin"
+      }
+    ]
+  ],
   "permission": {
     "*": "ask",
-    "bash": {
-      "*": "ask",
-      "rm *": "deny",
-      "find *": "allow",
-    },
-    "grep *": "allow",
-    "glob *": "allow",
-    "list *": "allow",
     "read": {
       "*": "allow",
       "*.env": "deny",
@@ -18,4 +18,108 @@
       "*.env.example": "allow"
     }
   },
+  "agent": {
+    "team-lead": {
+      "mode": "primary",
+      "description": "Orchestrates plugin team agents, delegates implementation, and reports progress to the user.",
+      "prompt": "You are the Team Lead for OpenCode agent teams. Your main job is to orchestrate work, not to do the implementation yourself. For non-trivial work, create or reuse a team, spawn teammates with team_spawn_member, assign clear slices, and wait for their team_send_message reports. Delegate implementation, investigation, and verification to teammates so work stays isolated in separate sessions and saves lead-session context. Communicate progress and decisions to the user. Only do delegated implementation yourself when a teammate is blocked, unavailable, or the user explicitly asks you to take over.",
+      "permission": {
+        "*": "allow",
+        "read": {
+          "*": "allow",
+          "*.env": "deny",
+          "*.env.*": "deny",
+          "*.env.example": "allow"
+        },
+        "external_directory": "allow",
+        "call_omo_agent": "allow",
+        "bash": {
+          "*": "allow",
+          "git push*": "ask",
+          "git reset --hard*": "ask",
+          "git clean*": "ask",
+          "rm -rf*": "ask",
+          "rm -fr*": "ask",
+          "sudo *": "ask",
+          "shutdown*": "ask",
+          "reboot*": "ask"
+        }
+      }
+    },
+    "build": {
+      "mode": "primary",
+      "permission": {
+        "*": "allow",
+        "read": {
+          "*": "allow",
+          "*.env": "deny",
+          "*.env.*": "deny",
+          "*.env.example": "allow"
+        },
+        "external_directory": "allow",
+        "call_omo_agent": "allow",
+        "bash": {
+          "*": "allow",
+          "git push*": "ask",
+          "git reset --hard*": "ask",
+          "git clean*": "ask",
+          "rm -rf*": "ask",
+          "rm -fr*": "ask",
+          "sudo *": "ask",
+          "shutdown*": "ask",
+          "reboot*": "ask"
+        }
+      }
+    },
+    "explore": {
+      "mode": "all",
+      "permission": {
+        "*": "allow",
+        "read": {
+          "*": "allow",
+          "*.env": "deny",
+          "*.env.*": "deny",
+          "*.env.example": "allow"
+        },
+        "external_directory": "allow",
+        "call_omo_agent": "allow",
+        "bash": {
+          "*": "allow",
+          "git push*": "ask",
+          "git reset --hard*": "ask",
+          "git clean*": "ask",
+          "rm -rf*": "ask",
+          "rm -fr*": "ask",
+          "sudo *": "ask",
+          "shutdown*": "ask",
+          "reboot*": "ask"
+        }
+      }
+    },
+    "general": {
+      "mode": "primary",
+      "permission": {
+        "*": "allow",
+        "read": {
+          "*": "allow",
+          "*.env": "deny",
+          "*.env.*": "deny",
+          "*.env.example": "allow"
+        },
+        "external_directory": "allow",
+        "call_omo_agent": "allow",
+        "bash": {
+          "*": "allow",
+          "git push*": "ask",
+          "git reset --hard*": "ask",
+          "git clean*": "ask",
+          "rm -rf*": "ask",
+          "rm -fr*": "ask",
+          "sudo *": "ask",
+          "shutdown*": "ask",
+          "reboot*": "ask"
+        }
+      }
+    }
+  }
 }
