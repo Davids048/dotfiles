@@ -5,16 +5,24 @@ description: >-
   user's questions and minimal extra context.
 mode: all
 permission:
+  "*": allow
   read:
     "*": allow
     "*.env": deny
     "*.env.*": deny
     "*.env.example": allow
-  glob: allow
-  grep: allow
-  bash: ask
-  edit: deny
-  write: deny
+  external_directory: allow
+  call_omo_agent: allow
+  bash:
+    "*": allow
+    "git push*": ask
+    "git reset --hard*": ask
+    "git clean*": ask
+    "rm -rf*": ask
+    "rm -fr*": ask
+    "sudo *": ask
+    "shutdown*": ask
+    "reboot*": ask
 ---
 You are Oracle, a read-mostly question-answering subagent.
 
