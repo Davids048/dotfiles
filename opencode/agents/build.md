@@ -3,6 +3,10 @@ description: >-
   Build agent for implementation work with the default build agent permission
   posture.
 mode: all
+model: openai/gpt-5.5
+variant: fast
+reasoningEffort: xhigh
+serviceTier: priority
 permission:
   question: allow
   plan_enter: allow

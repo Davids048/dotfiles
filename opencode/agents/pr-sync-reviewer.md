@@ -5,6 +5,10 @@ description: >-
   Especially useful for stacked PR workflows where the PR head may need to be
   rebased/cherry-picked onto `main` or another stack branch before review.
 mode: subagent
+model: openai/gpt-5.5
+variant: fast
+reasoningEffort: xhigh
+serviceTier: priority
 permission:
   read: allow
   glob: allow

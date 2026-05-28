@@ -2,9 +2,9 @@
   "$schema": "https://opencode.ai/tui.json",
   "plugin": [
     [
-      "file:///home/d1su/opencode-team-plugin/src/opencode-tui-plugin.ts",
+      "file:///home/hal-jundas/opencode-team-plugin/src/opencode-tui-plugin.ts",
       {
-        "stateRoot": "/home/d1su/.local/share/opencode-team-plugin"
+        "stateRoot": "/home/hal-jundas/.local/share/opencode-team-plugin"
       }
     ]
   ]
