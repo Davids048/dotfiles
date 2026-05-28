@@ -155,7 +155,7 @@ source "$DOTFILES_DIR/ai/codex/install.sh"
 source "$DOTFILES_DIR/ai/claude/install.sh"
 
 install_agent_configs() {
-  local opencode_source="$DOTFILES_DIR/opencode"
+  local opencode_source="$DOTFILES_DIR/ai/opencode"
   local opencode_target="$RUNTIME_CONFIG_HOME/opencode"
   local agent_skills_source="$DOTFILES_DIR/agents/skills"
   local agent_skills_target="$HOME/.agents/skills"
