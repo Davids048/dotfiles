@@ -27,8 +27,10 @@ The main design goal is to keep one tracked baseline while letting each machine 
 - `profiles/local.sh`
   Untracked machine-local override file created by bootstrap when a machine does not have a tracked profile yet.
 
-- `ai/codex/AGENTS.md`
-  Shared Codex instructions. Bootstrap links this file to `~/.codex/AGENTS.md` when `~/.codex` exists.
+- `ai/AGENTS.md`
+  Shared agent instructions. Bootstrap exposes this same file to Codex as
+  `~/.codex/AGENTS.md`, to Claude as `~/.claude/CLAUDE.md`, and to OpenCode via
+  `~/.config/opencode/AGENTS.md`.
 
 - `ai/opencode/`
   Tracked OpenCode configuration. Bootstrap links this directory to `~/.config/opencode`.

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Install Codex agents config.
+# Install Codex agent instructions.
 # Sourced by bootstrap.sh — expects backup_file() to be defined.
 
 install_codex_agents() {
   local codex_dir="$HOME/.codex"
-  local source_file="$DOTFILES_DIR/ai/codex/AGENTS.md"
+  local source_file="$DOTFILES_DIR/ai/AGENTS.md"
   local target_file="$codex_dir/AGENTS.md"
 
   if [[ ! -d "$codex_dir" ]]; then

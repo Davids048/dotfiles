@@ -28,6 +28,7 @@ After changing `opencode.json`, agent files, skills, commands, or plugins, quit 
 
 - Main config: `opencode.json`
 - Schema: `https://opencode.ai/config.json`
+- Shared instructions: `AGENTS.md` -> `../AGENTS.md`
 - `default_agent`: `build`
 - Inline agents in `opencode.json`: `team-lead`, `build`, `plan`, `explore`, `general`
 - File-based agents in `agents/`: `build.md`, `oracle.md`, `pr-sync-reviewer.md`
@@ -67,6 +68,7 @@ Auto-discovered from this config directory:
 
 Tracked here:
 
+- `AGENTS.md` symlink to the shared instructions at `../AGENTS.md`
 - `opencode.json`, `tui.json`
 - agent files under `agents/`
 - command files under `commands/`

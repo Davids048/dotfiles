@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Install Claude Code config: hooks, CLAUDE.md, and settings merge.
+# Install Claude Code config: hooks, shared agent instructions, and settings merge.
 # Sourced by bootstrap.sh — expects backup_file() to be defined.
 
 install_claude_config() {
   local claude_dir="$HOME/.claude"
   local source_dir="$DOTFILES_DIR/ai/claude"
+  local shared_agents_file="$DOTFILES_DIR/ai/AGENTS.md"
 
   if [[ ! -d "$claude_dir" ]]; then
     echo "Claude Code not installed (~/.claude not found), skipping."
@@ -23,9 +24,9 @@ install_claude_config() {
     echo "Linked $hooks_target -> $hooks_source"
   fi
 
-  # CLAUDE.md: symlink ~/.claude/CLAUDE.md -> dotfiles
+  # CLAUDE.md: symlink ~/.claude/CLAUDE.md -> shared agent instructions.
   local claude_md_target="$claude_dir/CLAUDE.md"
-  local claude_md_source="$source_dir/CLAUDE.md"
+  local claude_md_source="$shared_agents_file"
   if [[ -L "$claude_md_target" ]] && [[ "$(readlink -f "$claude_md_target")" == "$(readlink -f "$claude_md_source")" ]]; then
     echo "Existing $claude_md_target already links to dotfiles source."
   else
