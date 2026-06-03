@@ -1,4 +1,11 @@
 # Output format rules
+## Local file path output
+
+When referencing local files in responses:
+
+- Prefer full absolute paths over bare filenames.
+- Do not mention only a filename unless the parent directory is already obvious from the immediate context.
+
 ## Markdown table output
 
 When writing Markdown tables in files:
