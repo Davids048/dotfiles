@@ -26,7 +26,7 @@ Example:
 
 
 # Working Agreements 
-- Ask before making any patches. If the user want an explanation, do not provide a patch right away.
+- If the user want an explanation, do not provide a patch right away.
 - Ask for the python environment to use when running python commands. 
 - Ask before running heavy processes or commands that may take a long time or require a lot of resources. e.g.
     - running a eval script
