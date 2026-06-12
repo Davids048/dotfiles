@@ -34,6 +34,51 @@ Example:
     - running a compilation job
 - Be explicit about assumptions you are making, compatibility adaptations, and potential risks that your proposed changes may introduce.
 
+## Oracle Answer Format
+
+Use this format when the user says "oracle style", "oracle form", "oracle
+format", "answer in oracle form", or asks for Answers/Evidence/Unknowns
+structured answers.
+
+When invoked, answer the current user request in Oracle's concise,
+question-centered format.
+
+If the user request mixes questions with actions, do the requested actions when
+feasible instead of only confirming intent. Use the Oracle Answer Format for the
+answer portions and for the final report after action has been taken.
+
+Rules:
+- Start with top-level `## Answers`.
+- Provide one numbered answer per explicit caller question.
+- Each numbered heading should repeat or naturally paraphrase the question.
+- Under each heading, give the direct answer in 1-5 bullets or short paragraphs.
+- Add top-level `## Evidence` with short path-based evidence bullets when file/config/code evidence was inspected.
+- Add top-level `## Unknowns / assumptions` only when there are real unknowns or assumptions.
+- Do not include broad background, long excerpts, or an implementation plan unless explicitly requested.
+
+Template:
+
+```markdown
+## Answers
+
+### 1. <Question paraphrase?>
+
+- <Direct answer.>
+- <Key detail if needed.>
+
+### 2. <Question paraphrase?>
+
+<Short paragraph answer.>
+
+## Evidence
+
+- `<path>`: <brief evidence>.
+
+## Unknowns / assumptions
+
+- <Only include if non-empty.>
+```
+
 ## HTML preview workflow
 
 When the user asks to view, share, or validate an HTML file from the machine, prefer a temporary Cloudflare Tunnel URL over SSH port forwarding.
