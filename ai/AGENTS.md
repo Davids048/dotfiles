@@ -27,6 +27,49 @@ Example:
 
 # Working Agreements 
 - If the user want an explanation, do not provide a patch right away.
+- NEVER build flash-attn (Flash Attention 2) without explicit user approval. Always build flash attention with MAX_JOBS<=16.
+
+## Code Readability
+
+- Add short purpose comments for dense code blocks, complex functions, and non-obvious files so readers can quickly understand intent before parsing details.
+- Prefer comments that explain why a block exists or what role it plays, not line-by-line narration.
+- Keep comments concise and update them when behavior changes.
+
+## Experiment Workflow Boundary
+
+When executing experiments, preserve a clean researcher-facing workflow.
+
+Before creating experiment files, launching jobs, or generating run directories,
+state the experiment contract:
+
+```text
+Goal: <what research question/action is being run>
+Setup: <whether setup is needed, and where setup evidence will live>
+Launch: <the one user-facing command or script that starts the real run>
+Result: <the exact directory that will contain the real experiment output>
+Class: setup | validation | real experiment | debug/internal
+```
+
+Keep artifact semantics strict:
+
+- `runs/` is for real experiment launches only.
+- Setup, environment prep, dependency checks, dry runs, generated commands,
+  replay checks, debug attempts, and failed scaffolds must not be mixed into
+  `runs/`.
+- Put internal agent/debug artifacts under clearly named non-user-facing
+  locations such as `_internal/`, `_archive/`, `validation/`, or `env_setup/`.
+- Do not make "script that writes another script" the normal user-facing
+  workflow unless the user explicitly asks for that indirection.
+- Prefer direct researcher-facing entry points: one setup script, one launch
+  script, one result directory.
+- Validation is allowed, but its output should be summarized and hidden from
+  the main experiment interface unless the user asks to inspect it.
+- After execution, report only the clean contract: launch command,
+  data/model/config sources, real run directory, logs/checkpoints/W&B links,
+  and caveats.
+
+Codex may keep an internal audit trail, but the public experiment interface
+should remain: setup -> launch -> result.
 
 ## Oracle Answer Format
 
@@ -86,67 +129,3 @@ Use this workflow:
 - Keep the server and tunnel running if the user needs to inspect the page, and tell them the process IDs or stop command.
 
 Before exposing local files, be explicit that a Cloudflare quick tunnel creates a public, temporary URL and anyone with the URL can access the served HTML and any served sibling assets while the tunnel is running.
-
-# Karpathy-Inspired Coding Defaults
-
-Use these defaults when writing, reviewing, or refactoring code. They are
-adapted from the `CLAUDE.md` guidance in
-https://github.com/multica-ai/andrej-karpathy-skills and are meant to reduce
-common coding-agent mistakes.
-
-Tradeoff: these guidelines bias toward caution over speed. For trivial tasks,
-use judgment.
-
-## Think Before Coding
-
-Do not assume. Do not hide confusion. Surface tradeoffs.
-
-Before implementing:
-
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them instead of silently choosing.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop, name what is confusing, and ask.
-
-## Simplicity First
-
-Write the minimum code that solves the problem. Add nothing speculative.
-
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No flexibility or configurability that was not requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
-
-Ask: would a senior engineer say this is overcomplicated? If yes, simplify.
-
-## Surgical Changes
-
-Touch only what is necessary. Clean up only your own mess.
-
-When editing existing code:
-
-- Do not improve adjacent code, comments, or formatting.
-- Do not refactor things that are not broken.
-- Match existing style, even if you would do it differently.
-- If you notice unrelated dead code, mention it instead of deleting it.
-
-When your changes create orphans:
-
-- Remove imports, variables, functions, or files that your change made unused.
-- Do not remove pre-existing dead code unless asked.
-
-Every changed line should trace directly to the user's request.
-
-## Goal-Driven Execution
-
-Define success criteria and loop until verified.
-
-For non-trivial multi-step tasks, state a brief plan with checks:
-
-1. `[Step]` -> verify: `[check]`
-2. `[Step]` -> verify: `[check]`
-3. `[Step]` -> verify: `[check]`
-
-Strong success criteria let the agent loop independently. Weak criteria like
-"make it work" require constant clarification.
