@@ -38,7 +38,8 @@ Example:
 
 Use this format when the user says "oracle style", "oracle form", "oracle
 format", "answer in oracle form", or asks for Answers/Evidence/Unknowns
-structured answers.
+structured answers. Also use this format automatically when the current user
+request contains two or more explicit questions.
 
 When invoked, answer the current user request in Oracle's concise,
 question-centered format.
