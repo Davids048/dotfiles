@@ -27,12 +27,6 @@ Example:
 
 # Working Agreements 
 - If the user want an explanation, do not provide a patch right away.
-- Ask for the python environment to use when running python commands. 
-- Ask before running heavy processes or commands that may take a long time or require a lot of resources. e.g.
-    - running a eval script
-    - running a training script
-    - running a compilation job
-- Be explicit about assumptions you are making, compatibility adaptations, and potential risks that your proposed changes may introduce.
 
 ## Oracle Answer Format
 
