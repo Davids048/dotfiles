@@ -32,6 +32,7 @@ Example:
 ## Code Readability
 
 - Add short purpose comments for dense code blocks, complex functions, and non-obvious files so readers can quickly understand intent before parsing details.
+- Require every function longer than 10 lines to have a short purpose docstring instead of relying on a standalone purpose comment.
 - Prefer comments that explain why a block exists or what role it plays, not line-by-line narration.
 - Keep comments concise and update them when behavior changes.
 
@@ -67,6 +68,17 @@ Keep artifact semantics strict:
 - After execution, report only the clean contract: launch command,
   data/model/config sources, real run directory, logs/checkpoints/W&B links,
   and caveats.
+
+Keep snapshot semantics strict:
+
+- Each designed experiment run should have one canonical `snapshot/` directory
+  for immutable copies of config, prompts, source versions, commands, env, and
+  other reproducibility inputs.
+- Structure `snapshot/` by role or component when helpful, but store each shared
+  snapshot file once; do not duplicate the same config/data under multiple
+  component directories.
+- Put component-specific env/path snapshots under `snapshot/<component>/` and
+  shared files under `snapshot/shared/`.
 
 Codex may keep an internal audit trail, but the public experiment interface
 should remain: setup -> launch -> result.
