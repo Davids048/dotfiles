@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML Preview"
+  short_description: "Share local HTML previews"
+  default_prompt: "Use $html-preview to serve an HTML artifact with a temporary Cloudflare URL."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Experiment Workflow"
+  short_description: "Research experiment boundaries"
+  default_prompt: "Use $experiment-workflow when executing experiments to preserve a clean researcher-facing workflow."
