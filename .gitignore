@@ -7,3 +7,4 @@ ai/opencode/package-lock.json
 ai/opencode/bun.lock
 ai/opencode/*.backup-*
 ai/opencode/oh-my-openagent.json
+*.DS_Store*
