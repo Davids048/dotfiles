@@ -155,10 +155,9 @@ source "$DOTFILES_DIR/ai/codex/install.sh"
 source "$DOTFILES_DIR/ai/claude/install.sh"
 
 install_agent_configs() {
+  : "Link tracked app config that is shared by agent tools but not owned by Codex."
   local opencode_source="$DOTFILES_DIR/ai/opencode"
   local opencode_target="$RUNTIME_CONFIG_HOME/opencode"
-  local agent_skills_source="$DOTFILES_DIR/agents/skills"
-  local agent_skills_target="$HOME/.agents/skills"
 
   if [[ -d "$opencode_source" ]]; then
     mkdir -p "$RUNTIME_CONFIG_HOME"
@@ -177,26 +176,6 @@ install_agent_configs() {
       fi
       ln -s "$opencode_source" "$opencode_target"
       echo "Linked $opencode_target -> $opencode_source"
-    fi
-  fi
-
-  if [[ -d "$agent_skills_source" ]]; then
-    mkdir -p "$HOME/.agents"
-    if [[ -L "$agent_skills_target" ]]; then
-      if [[ "$(readlink -f "$agent_skills_target")" == "$agent_skills_source" ]]; then
-        echo "Existing $agent_skills_target already links to dotfiles source."
-      else
-        backup_file "$agent_skills_target"
-        rm -f "$agent_skills_target"
-        ln -s "$agent_skills_source" "$agent_skills_target"
-        echo "Linked $agent_skills_target -> $agent_skills_source"
-      fi
-    else
-      if [[ -e "$agent_skills_target" ]]; then
-        move_aside "$agent_skills_target"
-      fi
-      ln -s "$agent_skills_source" "$agent_skills_target"
-      echo "Linked $agent_skills_target -> $agent_skills_source"
     fi
   fi
 }
@@ -284,7 +263,7 @@ main() {
   install_codex_agents
   install_claude_config
 
-  if prompt_yes_no "Link tracked agent and opencode configs into ~/.config and ~/.agents?" Y; then
+  if prompt_yes_no "Link tracked OpenCode config into ~/.config?" Y; then
     install_agent_configs
   fi
 

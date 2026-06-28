@@ -36,11 +36,12 @@ The main design goal is to keep one tracked baseline while letting each machine 
   Codex setup notes and bootstrap helper. Use `ai/codex/README.md` as the stable
   handoff for agents setting up Codex on a new machine.
 
+- `ai/skills/`
+  Tracked Codex user skills. Bootstrap links this directory to `~/.agents/skills`
+  so Codex can discover the latest dotfiles-backed skills without copied files.
+
 - `ai/opencode/`
   Tracked OpenCode configuration. Bootstrap links this directory to `~/.config/opencode`.
-
-- `agents/skills/`
-  Tracked shared agent skills. Bootstrap links this directory to `~/.agents/skills` while leaving runtime state in `~/.agents` alone.
 
 - `bootstrap.sh`
   Interactive setup entrypoint for wiring a new machine into this repo.
@@ -54,6 +55,7 @@ Current expected locations:
 - NVM: `~/.nvm`
 - GitHub CLI: `~/.config/gh`
 - Codex runtime home: `CODEX_HOME` if set, otherwise Codex's documented default
+- Codex user skills link: `~/.agents/skills -> ~/dotfiles/ai/skills`
 - GitHub Copilot: `~/.config/github-copilot`
 - Go app state: `~/.config/go`
 - Lazygit: `~/.config/lazygit`
@@ -82,7 +84,7 @@ Bootstrap does four things:
 
 1. lets you pick a tracked machine profile, or create `profiles/local.sh`
 2. rewrites the home entrypoint stubs
-3. links tracked Neovim, htop, Codex/Claude instructions, OpenCode, and agent-skill config into runtime locations
+3. links tracked Neovim, htop, Codex/Claude instructions, Codex skills, and OpenCode config into runtime locations
 4. checks for core tools: `zsh`, `tmux`, `nvim`, `fzf`, `rg`, and `yazi`
 
 Bootstrap writes backups to `~/.dotfiles-backups/<timestamp>/` before replacing home stubs.
@@ -163,8 +165,8 @@ If the machine uses the Bash-to-Zsh fallback, launching an interactive Bash shel
 
 - This repo intentionally tracks shell, tmux, Vim/Neovim, Git, and htop setup.
 - It also tracks agent configuration that is source-like: shared agent guidance,
-  Codex setup notes, OpenCode config, OpenCode agents/commands/skills, and
-  shared `~/.agents/skills`.
+  Codex setup notes, Codex user skills, OpenCode config, and OpenCode
+  agents/commands/skills.
 - It intentionally does not track agent runtime state such as `~/.agents/chat_data.json`, `~/.agents/jobs.json`, `~/.agents/runs/`, or `~/.agents/ra-runtime.env`.
 - It intentionally does not track Codex app-owned runtime state or copy exact
   Codex config snippets here. Use `ai/codex/README.md` and the official Codex

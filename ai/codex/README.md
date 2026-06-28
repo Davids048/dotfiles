@@ -10,6 +10,8 @@ Codex config field names in this repo.
   `bootstrap.sh` runs.
 - `../AGENTS.md` is the shared durable working agreement exposed to Codex as
   global guidance.
+- `../skills/` is the tracked Codex user-skill source. `install.sh` links it to
+  `~/.agents/skills`, which is Codex's documented user-skill discovery path.
 - This README is the setup checklist for agents configuring Codex on a new
   machine.
 
@@ -17,7 +19,12 @@ Codex config field names in this repo.
 
 Codex runtime config and state live outside this repo. The active runtime home is
 the `CODEX_HOME` environment variable when it is set; otherwise use Codex's
-documented default. Treat files there as mutable runtime/user config.
+documented default. `install.sh` uses that same runtime-home resolution when
+linking `AGENTS.md`. Treat files there as mutable runtime/user config.
+
+Codex user skills are source-like and are tracked here under `../skills/`.
+Bootstrap links `~/.agents/skills` to that directory so local skill edits in
+dotfiles are visible to fresh Codex sessions without copying.
 
 Do not track Codex auth, sessions, logs, caches, generated state, or copied
 config snippets in dotfiles. This repo should track the procedure and the links
@@ -28,7 +35,8 @@ to current documentation, not stale TOML.
 When asked to set up Codex on one of my machines:
 
 1. Run or inspect `~/dotfiles/bootstrap.sh` first so the shared agent guidance is
-   linked into the active Codex runtime home.
+   linked into the active Codex runtime home and `~/.agents/skills` points at
+   `~/dotfiles/ai/skills`.
 2. Detect the active Codex runtime home from the environment and confirm which
    config file Codex is reading.
 3. Inspect the current config before editing it, and preserve unrelated local
@@ -58,3 +66,4 @@ reviewer to approve the same noisy escalation forever.
 - Auto-review: https://developers.openai.com/codex/concepts/sandboxing/auto-review
 - Permission profiles: https://developers.openai.com/codex/permissions
 - Customization and agent guidance: https://developers.openai.com/codex/concepts/customization
+- Codex skills: https://developers.openai.com/codex/skills
